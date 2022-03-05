@@ -1,3 +1,4 @@
+import './CardMovie.css'
 import { Card } from '@nextui-org/react'
 import { FC } from 'react'
 
@@ -8,11 +9,11 @@ interface CardMovieProps {
 
 const CardMovie:FC<CardMovieProps> = ({ titleMovie, pathPoster }) => {
   return (
-    <div className="card-movie">
-      <Card hoverable clickable css={{ w: '200px' }}>
-        <Card.Body css={{ p: 0 }}>
+    <div >
+      <Card clickable css={{ w: '200px' }} className="card-movie">
+        <Card.Body css={{ p: 0 }} className="card-body">
           <Card.Image
-            objectFit="cover"
+            objectFit='cover'
             src={pathPoster}
             width='100%'
             height='100%'

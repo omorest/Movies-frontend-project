@@ -8,7 +8,7 @@ interface SearchProps {
 const SearchMovie: FC<SearchProps> = ({ onSearch }) => {
   const [value, setValue] = useState<string>('')
   const handlerChange = (event: any) => setValue(event.target.value)
-  const handlerEnter = (event: ant) => {
+  const handlerEnter = (event: any) => {
     event.preventDefault()
     onSearch(value)
   }
@@ -18,7 +18,7 @@ const SearchMovie: FC<SearchProps> = ({ onSearch }) => {
       <form onSubmit={handlerEnter}>
         <Input clearable bordered
           placeholder="Cast, movie, production"
-          color="secondary"
+          color="primary"
           width='300px'
           onChange={handlerChange}
         />
