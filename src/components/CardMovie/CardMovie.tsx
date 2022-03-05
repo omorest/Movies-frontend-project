@@ -1,4 +1,4 @@
-import { Card, Text, Row } from '@nextui-org/react'
+import { Card } from '@nextui-org/react'
 import { FC } from 'react'
 
 interface CardMovieProps {
@@ -17,6 +17,7 @@ const CardMovie:FC<CardMovieProps> = ({ titleMovie, pathPoster }) => {
             width='100%'
             height='100%'
             alt={titleMovie}
+            css={{ h: '300px' }}
           />
         </Card.Body>
       </Card>
