@@ -23,4 +23,5 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  row-gap: 30px;
 }
