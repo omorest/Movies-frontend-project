@@ -1,0 +1,26 @@
+.carousel-movies {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  flex: 1;
+  padding: 30px 0px;
+}
+.carousel-movies::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.carousel-movies::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.571);
+  border-radius: 10px;
+}
+.carousel-movies::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  border-radius: 10px;
+}
+
+
+.gallery-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
