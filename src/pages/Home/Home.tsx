@@ -8,8 +8,8 @@ const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=1`
 const urlNowPlayingMovies = `${BASE_URL}/movie/now_playing?api_key=${KEY}&page=1`
 
 const Home = () => {
-  const popularMovies = useFetchMovies(urlPopularMovies)
-  const nowPlayingMovies = useFetchMovies(urlNowPlayingMovies)
+  const { listMovies: popularMovies } = useFetchMovies(urlPopularMovies)
+  const { listMovies: nowPlayingMovies } = useFetchMovies(urlNowPlayingMovies)
 
   return (
     <>
