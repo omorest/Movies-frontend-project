@@ -12,11 +12,7 @@ const useFetchMovies = (url: string) => {
     requestMovies().catch((err) => console.log(err))
   }, [])
 
-  const getListMovies = async (url: string) => {
-    return await fetchMovies(url)
-  }
-
-  return { listMovies, getListMovies }
+  return listMovies
 }
 
 export default useFetchMovies
