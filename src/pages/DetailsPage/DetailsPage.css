@@ -1,0 +1,23 @@
+.header {
+  background-color: red;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.video-responsive {
+  height: 100%;
+}
+
+.img {
+  height: 100%;
+}
+
+img {
+  /* height: 100%; */
+  width: 350px;
+  object-fit: contain;
+}
+
+iframe {
+  /* height: 100%; */
+}

@@ -18,8 +18,8 @@ const SectionNowPlayingMovies = () => {
     requestMovies().catch((err) => console.log(err))
   }, [])
 
-  const movies = nowPlayingMovies?.map(({ title, id, poster_path: posterPath }) => {
-    return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
+  const movies = nowPlayingMovies?.map((movie: any) => {
+    return <CardMovie movie={movie} key={movie.id} />
   })
 
   return (

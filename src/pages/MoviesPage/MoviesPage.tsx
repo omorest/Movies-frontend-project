@@ -2,7 +2,7 @@ import './MoviesPage.css'
 import { Button, Spacer } from '@nextui-org/react'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { BASE_URL, BASE_URL_IMAGES, KEY } from '../../../configs'
+import { BASE_URL, KEY } from '../../../configs'
 import { fetchMovies } from '../../api'
 import { CardMovie, CarouselMovies, Navbar, SearchMovie, CardCast, CardCompany } from '../../components'
 
@@ -49,8 +49,8 @@ const MoviesPage = () => {
         return <CardCompany company={company} key={company.id} />
       })
     } else {
-      listSelection = movies?.map(({ title, id, poster_path: posterPath }) => {
-        return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
+      listSelection = movies?.map((movie:any) => {
+        return <CardMovie movie={movie} key={movie.id} />
       })
     }
     setList(listSelection)

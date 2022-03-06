@@ -1,14 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { BASE_URL, BASE_URL_IMAGES, KEY } from '../../../configs'
+import { useEffect, useState } from 'react'
+import { BASE_URL, KEY } from '../../../configs'
 import { fetchMovies } from '../../api'
 import CardMovie from '../CardMovie/CardMovie'
 import CarouselMovies from '../CarouselMovies/CarouselMovies'
 
 const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=1`
-
-const onUpdateMovies = () => {
-
-}
 
 const SectionPopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState([])
@@ -21,8 +17,8 @@ const SectionPopularMovies = () => {
     requestMovies().catch((err) => console.log(err))
   }, [])
 
-  const movies = popularMovies?.map(({ title, id, poster_path: posterPath }) => {
-    return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
+  const movies = popularMovies?.map((movie: any) => {
+    return <CardMovie movie={movie} key={movie.id} />
   })
 
   return (
