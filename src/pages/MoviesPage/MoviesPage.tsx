@@ -67,8 +67,7 @@ const MoviesPage = () => {
         <Button color="gradient" auto onClick={handlerCast}>Cast</Button>
         <Button color="gradient" auto onClick={handlerCompanies}>Companies</Button>
       </div>
-      <h2>{inputValue}</h2>
-      <CarouselMovies isTypeGrid={false}>
+      <CarouselMovies title={inputValue} isTypeGrid={false}>
         {list}
       </CarouselMovies>
       <Spacer y={2}/>
