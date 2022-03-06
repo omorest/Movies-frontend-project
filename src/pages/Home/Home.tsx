@@ -1,31 +1,41 @@
 import './Home.css'
 import { Spacer } from '@nextui-org/react'
-// import { useEffect, useState } from 'react'
-import { BASE_URL, KEY } from '../../../configs'
+import { BASE_URL, BASE_URL_IMAGES, KEY } from '../../../configs'
 import useFetchMovies from '../../hooks/useFetchMovies'
-import { CarouselMovies, SearchMovie } from '../../components'
+import { CardMovie, CarouselMovies, Navbar, SearchMovie } from '../../components'
 
 const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=1`
 const urlNowPlayingMovies = `${BASE_URL}/movie/now_playing?api_key=${KEY}&page=1`
-// const urlSearchMovies = `${BASE_URL}/search/movie/?api_key=${KEY}&page=1&query=`
 
 const Home = () => {
   const popularMovies = useFetchMovies(urlPopularMovies)
   const nowPlayingMovies = useFetchMovies(urlNowPlayingMovies)
 
+  const listPopularMovies = popularMovies?.map(({ title, id, poster_path: posterPath }) => {
+    return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
+  })
+
+  const listNowPlayingMovies = nowPlayingMovies?.map(({ title, id, poster_path: posterPath }) => {
+    return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
+  })
+
   return (
     <>
-      <h1>Movies App</h1>
+      <Navbar></Navbar>
       <Spacer y={2}/>
-      <SearchMovie onSearch={() => {}}/>
+      <SearchMovie/>
 
       <Spacer y={2}/>
       <h2>Most populars movies</h2>
-      <CarouselMovies movies={popularMovies} isTypeGrid={true}/>
+      <CarouselMovies isTypeGrid={true}>
+        {listPopularMovies}
+      </CarouselMovies>
       <Spacer y={1}/>
 
       <h2>Now playing movies</h2>
-      <CarouselMovies movies={nowPlayingMovies} isTypeGrid={true}/>
+      <CarouselMovies isTypeGrid={true}>
+        {listNowPlayingMovies}
+      </CarouselMovies>
       <Spacer y={2}/>
     </>
   )

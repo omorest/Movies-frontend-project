@@ -11,7 +11,7 @@ const CardMovie:FC<CardMovieProps> = ({ titleMovie, pathPoster }) => {
   return (
     <div >
       <Card clickable css={{ w: '200px' }} className="card-movie">
-        <Card.Body css={{ p: 0 }} className="card-body">
+        <Card.Body css={{ p: 0, color: 'black' }} className="card-body">
           <Card.Image
             objectFit='cover'
             src={pathPoster}
