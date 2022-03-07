@@ -1,10 +1,10 @@
-import './MoviesPage.css'
+import './SearchPage.css'
 import { Button, Spacer } from '@nextui-org/react'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BASE_URL, KEY } from '../../../configs'
 import { fetchCasts, fetchCompanies, fetchMovies } from '../../api'
-import { CarouselMovies, Navbar, SearchMovie } from '../../components'
+import { CarouselMovies, Navbar, SearchInput } from '../../components'
 import CarouselCasts from '../../components/CarouselCasts/CarouselCasts'
 import CarouselCompanies from '../../components/CarouselCompanies/CarouselCompanies'
 
@@ -12,7 +12,7 @@ const urlSearchMovies = `${BASE_URL}/search/movie?api_key=${KEY}&page=1&query=`
 const urlSearchCasts = `${BASE_URL}/search/person?api_key=${KEY}&page=1&query=`
 const urlSearchCompanies = `${BASE_URL}/search/company?api_key=${KEY}&page=1&query=`
 
-const MoviesPage = () => {
+const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [typeSection, setTypeSection] = useState('movies')
   const [list, setList] = useState<ReactElement>()
@@ -56,7 +56,7 @@ const MoviesPage = () => {
     <>
       <Navbar></Navbar>
       <Spacer y={2}/>
-      <SearchMovie />
+      <SearchInput />
       <Spacer y={2}/>
       <div className="buttons">
         <Button color="gradient" auto onClick={handlerMovies}>Movies</Button>
@@ -69,4 +69,4 @@ const MoviesPage = () => {
   )
 }
 
-export default MoviesPage
+export default SearchPage

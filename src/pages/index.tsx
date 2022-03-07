@@ -1,4 +1,4 @@
 import Home from './Home/Home'
-import MoviesPage from './MoviesPage/MoviesPage'
+import SearchPage from './SearchPage/SearchPage'
 
-export { Home, MoviesPage }
+export { Home, SearchPage }

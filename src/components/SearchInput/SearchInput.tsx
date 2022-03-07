@@ -1,15 +1,15 @@
-import './SearchMovie.css'
+import './SearchInput.css'
 import { FC, useState } from 'react'
 import { Input } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
 
-const SearchMovie: FC<any> = () => {
+const SearchInput: FC<any> = () => {
   const [value, setValue] = useState<string>('')
   const handlerChange = (event: any) => setValue(event.target.value)
   const navigate = useNavigate()
   const handlerEnter = (event: any) => {
     event.preventDefault()
-    navigate('/movies', { state: { inputValue: value } })
+    navigate('/search', { state: { inputValue: value } })
   }
 
   return (
@@ -28,4 +28,4 @@ const SearchMovie: FC<any> = () => {
   )
 }
 
-export default SearchMovie
+export default SearchInput
