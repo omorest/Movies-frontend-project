@@ -12,17 +12,18 @@ const CardCompany:FC<CardCompanyProps> = ({ company }) => {
 
   return (
     <>
-      <Card hoverable css={{ w: '200px' }}>
-        <Card.Body css={{ p: 0 }}>
+      <Card hoverable className="card-cast" css={{ w: '200px', borderRadius: '0px', backgroundColor: 'white' }}>
+        <Card.Body css={{ p: 0, color: 'black', borderRadius: '0px' }}>
           <Card.Image
             src={urlImage}
+            alt={name}
             objectFit='contain'
             width='100%'
             height='100%'
             css={{ h: '300px' }}
           />
         </Card.Body>
-        <Card.Footer>
+        <Card.Footer css={{ backgroundColor: 'white', borderRadius: '0px' }}>
           <Row wrap='wrap' justify="space-between">
             <Text b>
               {name}

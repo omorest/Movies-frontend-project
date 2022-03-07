@@ -13,15 +13,15 @@ const CardMovie:FC<CardMovieProps> = ({ movie }) => {
 
   return (
     <div >
-      <Card clickable css={{ w: '200px' }} className="card-movie">
-        <Card.Body css={{ p: 0, color: 'black' }} className="card-body">
+      <Card clickable css={{ w: '200px', borderRadius: '0px', backgroundColor: 'transparent' }} className="card-movie">
+        <Card.Body css={{ p: 0, color: 'black', borderRadius: '0px' }} className="card-body">
           <Card.Image
             objectFit='cover'
             src={urlImage}
             width='100%'
             height='100%'
             alt={title}
-            css={{ h: '300px' }}
+            css={{ h: '300px', borderRadius: '0px' }}
           />
         </Card.Body>
       </Card>

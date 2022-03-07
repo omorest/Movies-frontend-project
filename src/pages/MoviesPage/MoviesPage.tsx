@@ -3,7 +3,7 @@ import { Button, Spacer } from '@nextui-org/react'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BASE_URL, KEY } from '../../../configs'
-import { fetchMovies } from '../../api'
+import { fetchCasts, fetchCompanies, fetchMovies } from '../../api'
 import { CarouselMovies, Navbar, SearchMovie } from '../../components'
 import CarouselCasts from '../../components/CarouselCasts/CarouselCasts'
 import CarouselCompanies from '../../components/CarouselCompanies/CarouselCompanies'
@@ -26,8 +26,8 @@ const MoviesPage = () => {
     const requestMovies = async () => {
       setIsLoading(true)
       const movies = await fetchMovies(urlSearchMovies + inputValue)
-      const casts = await fetchMovies(urlSearchCasts + inputValue)
-      const companies = await fetchMovies(urlSearchCompanies + inputValue)
+      const casts = await fetchCasts(urlSearchCasts + inputValue)
+      const companies = await fetchCompanies(urlSearchCompanies + inputValue)
       setMovies(movies)
       setCasts(casts)
       setCompanies(companies)
