@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { BASE_URL, BASE_URL_IMAGES, KEY } from '../../../configs'
+import { BASE_URL, KEY } from '../../../configs'
 import { fetchMovies } from '../../api'
-import CardMovie from '../CardMovie/CardMovie'
 import CarouselMovies from '../CarouselMovies/CarouselMovies'
 
 const urlNowPlayingMovies = `${BASE_URL}/movie/now_playing?api_key=${KEY}&page=`
@@ -18,15 +17,12 @@ const SectionNowPlayingMovies = () => {
     requestMovies().catch((err) => console.log(err))
   }, [])
 
-  const movies = nowPlayingMovies?.map(({ title, id, poster_path: posterPath }) => {
-    return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
-  })
-
   return (
     <>
-      <CarouselMovies title={'Now playing movies'} isTypeGrid={true}>
-        {movies}
-      </CarouselMovies>
+      <CarouselMovies
+        listMovies={nowPlayingMovies}
+        title={'Most populars movies'}
+        isTypeGrid={true} />
     </>
   )
 }

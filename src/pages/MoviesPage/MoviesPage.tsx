@@ -2,9 +2,11 @@ import './MoviesPage.css'
 import { Button, Spacer } from '@nextui-org/react'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { BASE_URL, BASE_URL_IMAGES, KEY } from '../../../configs'
+import { BASE_URL, KEY } from '../../../configs'
 import { fetchMovies } from '../../api'
-import { CardMovie, CarouselMovies, Navbar, SearchMovie, CardCast, CardCompany } from '../../components'
+import { CarouselMovies, Navbar, SearchMovie } from '../../components'
+import CarouselCasts from '../../components/CarouselCasts/CarouselCasts'
+import CarouselCompanies from '../../components/CarouselCompanies/CarouselCompanies'
 
 const urlSearchMovies = `${BASE_URL}/search/movie?api_key=${KEY}&page=1&query=`
 const urlSearchCasts = `${BASE_URL}/search/person?api_key=${KEY}&page=1&query=`
@@ -13,12 +15,12 @@ const urlSearchCompanies = `${BASE_URL}/search/company?api_key=${KEY}&page=1&que
 const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [typeSection, setTypeSection] = useState('movies')
-  const [list, setList] = useState<ReactElement[]>([])
+  const [list, setList] = useState<ReactElement>()
   const [movies, setMovies] = useState([])
   const [casts, setCasts] = useState([])
   const [companies, setCompanies] = useState([])
   const location = useLocation()
-  const { inputValue } = location.state
+  const { inputValue } = location.state as any
 
   useEffect(() => {
     const requestMovies = async () => {
@@ -39,19 +41,13 @@ const MoviesPage = () => {
   const handlerCompanies = () => setTypeSection('companies')
 
   useEffect(() => {
-    let listSelection = []
+    let listSelection
     if (typeSection === 'casts') {
-      listSelection = casts?.map((cast: any) => {
-        return <CardCast cast={cast} key={cast.id}/>
-      })
+      listSelection = <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={false} />
     } else if (typeSection === 'companies') {
-      listSelection = companies?.map((company: any) => {
-        return <CardCompany company={company} key={company.id} />
-      })
+      listSelection = <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={false} />
     } else {
-      listSelection = movies?.map(({ title, id, poster_path: posterPath }) => {
-        return <CardMovie pathPoster={`${BASE_URL_IMAGES}${posterPath}`} titleMovie={title} key={id} />
-      })
+      listSelection = <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={false} />
     }
     setList(listSelection)
   }, [typeSection, isLoading])
@@ -67,9 +63,7 @@ const MoviesPage = () => {
         <Button color="gradient" auto onClick={handlerCast}>Cast</Button>
         <Button color="gradient" auto onClick={handlerCompanies}>Companies</Button>
       </div>
-      <CarouselMovies title={inputValue} isTypeGrid={false}>
-        {list}
-      </CarouselMovies>
+      {list}
       <Spacer y={2}/>
     </>
   )
