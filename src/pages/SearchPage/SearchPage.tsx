@@ -1,10 +1,10 @@
 import './SearchPage.css'
-import { Button, Spacer } from '@nextui-org/react'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BASE_URL, KEY } from '../../../configs'
 import { fetchCasts, fetchCompanies, fetchMovies } from '../../api'
 import { CarouselMovies, Navbar, SearchInput, CarouselCasts, CarouselCompanies } from '../../components'
+import { ButtonGroup, Button } from '@chakra-ui/react'
 
 const urlSearchMovies = `${BASE_URL}/search/movie?api_key=${KEY}`
 const urlSearchCasts = `${BASE_URL}/search/person?api_key=${KEY}`
@@ -70,20 +70,23 @@ const SearchPage = () => {
     casts:
       <>
         <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={false} />
-        <Spacer y={2}/>
-        <Button color="gradient" auto onClick={handlerNewCasts} css={{ w: '100%' }}>Show more</Button>
+        <br/>
+        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
+        <br/>
       </>,
     companies:
       <>
         <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={false} />
-        <Spacer y={2}/>
-        <Button color="gradient" auto onClick={handlerNewCompanies} css={{ w: '100%' }}>Show more</Button>
+        <br/>
+        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
+        <br/>
       </>,
     movies:
       <>
         <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={false} />
-        <Spacer y={2}/>
-        <Button color="gradient" auto onClick={handlerNewMovies} css={{ w: '100%' }}>Show more</Button>
+        <br />
+        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
+        <br />
       </>
   }
 
@@ -97,16 +100,20 @@ const SearchPage = () => {
   return (
     <>
       <Navbar></Navbar>
-      <Spacer y={2}/>
+      <br />
       <SearchInput />
-      <Spacer y={2}/>
+      <br />
+      <br />
       <div className="buttons">
-        <Button color="gradient" auto onClick={handlerMovies}>Movies</Button>
-        <Button color="gradient" auto onClick={handlerCast}>Cast</Button>
-        <Button color="gradient" auto onClick={handlerCompanies}>Companies</Button>
+        <ButtonGroup variant='solid' spacing='6'>
+          <Button colorScheme='blue' onClick={handlerMovies}>Movies</Button>
+          <Button colorScheme='blue' onClick={handlerCast}>Casts</Button>
+          <Button colorScheme='blue' onClick={handlerCompanies}>Companies</Button>
+        </ButtonGroup>
       </div>
+      <br />
       {list}
-      <Spacer y={2}/>
+      <br />
     </>
   )
 }

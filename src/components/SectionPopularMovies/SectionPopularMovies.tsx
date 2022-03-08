@@ -27,7 +27,6 @@ const SectionPopularMovies = () => {
         isTypeGrid={true}
         onUpdateMovies={handlerPagination}
       />
-      <h1>{page}</h1>
     </>
   )
 }

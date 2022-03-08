@@ -1,6 +1,7 @@
 import './CarouselMovies.css'
 import { FC, useRef } from 'react'
 import CardMovie from '../CardMovie/CardMovie'
+import { Text } from '@chakra-ui/react'
 
 interface CarouselMoviesProps {
   isTypeGrid: boolean,
@@ -24,7 +25,10 @@ const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid
 
   return (
     <>
-      <h2>{title}</h2>
+      <div className="text">
+        <Text fontSize='2xl' as='b' textAlign='left'>{title}</Text>
+      </div>
+      <br/>
       <div className={typeViewMovies} ref={scrollRef} onScroll={handleScroll}>
         {listMovies?.map((movie: any) => <CardMovie movie={movie} key={movie.id} />)}
       </div>

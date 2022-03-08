@@ -1,7 +1,6 @@
 .card-movie {
   border: 0px solid black;
   border-radius: 2px;
-  margin-left: 20px;
 }
 .card-movie:hover {
   transition: 0.3s;

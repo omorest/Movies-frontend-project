@@ -14,6 +14,7 @@ const CarouselCompanies: FC<CarouselCompaniesProps> = ({ listCompanies, title, i
   return (
     <>
       <h2>{title}</h2>
+      <br/>
       <div className={typeViewCompanies}>
         {listCompanies?.map((company: any) => <CardCompany company={company} key={company.id} />)}
       </div>
