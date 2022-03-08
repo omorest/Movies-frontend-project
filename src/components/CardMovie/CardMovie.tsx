@@ -1,5 +1,5 @@
 import './CardMovie.css'
-import { Card } from '@nextui-org/react'
+import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 
@@ -13,18 +13,9 @@ const CardMovie:FC<CardMovieProps> = ({ movie }) => {
 
   return (
     <div >
-      <Card clickable css={{ w: '200px', borderRadius: '0px', backgroundColor: 'transparent' }} className="card-movie">
-        <Card.Body css={{ p: 0, color: 'black', borderRadius: '0px' }} className="card-body">
-          <Card.Image
-            objectFit='cover'
-            src={urlImage}
-            width='100%'
-            height='100%'
-            alt={title}
-            css={{ h: '300px', borderRadius: '0px' }}
-          />
-        </Card.Body>
-      </Card>
+      <Box w='200px' borderWidth='0px' overflow='hidden' className="card-movie">
+        <Image src={urlImage} alt={title} />
+      </Box>
     </div>
   )
 }

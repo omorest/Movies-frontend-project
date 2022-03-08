@@ -1,6 +1,6 @@
 import './CardCast.css'
-import { Card, Row, Text } from '@nextui-org/react'
 import { FC } from 'react'
+import { Box, Image } from '@chakra-ui/react'
 import { BASE_URL_IMAGES } from '../../../configs'
 
 interface CardCastProps {
@@ -13,25 +13,23 @@ const CardCast:FC<CardCastProps> = ({ cast }) => {
 
   return (
     <>
-      <Card hoverable className="card-cast" css={{ w: '200px', borderRadius: '0px', backgroundColor: 'transparent' }}>
-        <Card.Body css={{ p: 0, color: 'black', borderRadius: '0px' }}>
-          <Card.Image
-            src={urlImage}
-            objectFit='cover'
-            alt={name}
+      <Box w='200px' overflow='hidden' className="card-cast" borderWidth='3px' borderRadius='3px'>
+        <Image src={urlImage} alt={name} borderRadius='3px'/>
+        <Box display='flex' alignItems='baseline' >
+          <Box
             width='100%'
-            height='100%'
-            css={{ h: '300px', borderRadius: '0px' }}
-          />
-        </Card.Body>
-        <Card.Footer css={{ backgroundColor: 'white', borderRadius: '0px' }}>
-          <Row wrap='wrap' justify="space-between">
-            <Text b>
-              {name}
-            </Text>
-          </Row>
-        </Card.Footer>
-      </Card>
+            p='3'
+            color='black.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='4'
+          >
+            {name}
+          </Box>
+        </Box>
+      </Box>
     </>
   )
 }

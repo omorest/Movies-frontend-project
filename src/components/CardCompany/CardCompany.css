@@ -1,9 +1,30 @@
 .card-company{
-  border: 0px solid black;
-  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 0px;
   margin-left: 20px;
 }
 .card-company:hover {
   transition: 0.4s;
-  box-shadow: 0px 10px 15px 0px rgb(0, 0, 0);
+  box-shadow: 0px 10px 15px 0px rgba(114, 114, 114, 0.715);
+}
+
+.card-image {
+  height: 85%;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content:center
+}
+.card-image img {
+  width: 85%;
+}
+
+.card-text {
+  padding: 20px 0px;
+  height:15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

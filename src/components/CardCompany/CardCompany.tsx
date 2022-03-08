@@ -1,4 +1,5 @@
-import { Card, Row, Text } from '@nextui-org/react'
+import './CardCompany.css'
+import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 
@@ -12,25 +13,27 @@ const CardCompany:FC<CardCompanyProps> = ({ company }) => {
 
   return (
     <>
-      <Card hoverable className="card-cast" css={{ w: '200px', borderRadius: '0px', backgroundColor: 'white' }}>
-        <Card.Body css={{ p: 0, color: 'black', borderRadius: '0px' }}>
-          <Card.Image
-            src={urlImage}
-            alt={name}
-            objectFit='contain'
-            width='100%'
-            height='100%'
-            css={{ h: '300px' }}
-          />
-        </Card.Body>
-        <Card.Footer css={{ backgroundColor: 'white', borderRadius: '0px' }}>
-          <Row wrap='wrap' justify="space-between">
-            <Text b>
-              {name}
-            </Text>
-          </Row>
-        </Card.Footer>
-      </Card>
+      <Box w='200px'
+        overflow='hidden'
+        className="card-company"
+        borderWidth='3px'
+        borderRadius='3px'
+      >
+        <Box className="card-image">
+          <Image src={urlImage} alt={name} borderRadius='3px' />
+        </Box>
+        <Box
+          className="card-text"
+          color='gray.500'
+          fontWeight='semibold'
+          letterSpacing='wide'
+          fontSize='xs'
+          textTransform='uppercase'
+          ml='2'
+        >
+          {name}
+        </Box>
+      </Box>
     </>
   )
 }
