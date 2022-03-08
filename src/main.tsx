@@ -2,13 +2,15 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import { BrowserRouter } from 'react-router-dom'
-import { Container } from '@nextui-org/react'
+import { Container, ChakraProvider } from '@chakra-ui/react'
 
 ReactDOM.render(
   <BrowserRouter>
-    <Container>
-      <App />
-    </Container>
+    <ChakraProvider>
+      <Container maxW='container.xl'>
+        <App />
+      </Container>
+    </ChakraProvider>
   </BrowserRouter>,
   document.getElementById('root')
 )

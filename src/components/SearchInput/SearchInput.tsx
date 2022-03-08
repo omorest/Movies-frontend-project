@@ -1,7 +1,7 @@
 import './SearchInput.css'
 import { FC, useState } from 'react'
-import { Input } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
+import { Input } from '@chakra-ui/react'
 
 const SearchInput: FC<any> = () => {
   const [value, setValue] = useState<string>('')
@@ -15,12 +15,12 @@ const SearchInput: FC<any> = () => {
   return (
     <div className="search">
       <form onSubmit={handlerEnter}>
-        <Input clearable bordered
-          className="input-search"
-          placeholder="Cast, movie, production"
-          color="primary"
-          status='primary'
-          width='300px'
+        <Input
+          placeholder='Cast, movie, production'
+          size='lg'
+          focusBorderColor='pink.400'
+          isFullWidth={false}
+          width={'70%'}
           onChange={handlerChange}
         />
       </form>
