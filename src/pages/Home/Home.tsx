@@ -1,6 +1,6 @@
 import './Home.css'
 import { Spacer } from '@nextui-org/react'
-import { Navbar, SearchMovie } from '../../components'
+import { Navbar, SearchInput } from '../../components'
 import MoviesSections from '../../components/MoviesSections/MoviesSections'
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Navbar></Navbar>
       <Spacer y={2}/>
-      <SearchMovie/>
+      <SearchInput/>
       <Spacer y={2}/>
       <MoviesSections />
     </>

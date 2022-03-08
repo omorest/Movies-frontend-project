@@ -6,7 +6,7 @@ interface CarouselMoviesProps {
   isTypeGrid: boolean,
   title?: string,
   listMovies: any,
-  onUpdateMovies: () => void
+  onUpdateMovies?: () => void
 }
 
 const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid = true, onUpdateMovies }) => {
