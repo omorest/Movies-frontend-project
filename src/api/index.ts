@@ -1,9 +1,7 @@
 export const fetchMovies = async (url: string) => {
   const data = await fetch(url)
   const { results } = await data.json()
-  const elements = results.filter((element: any) => element.poster_path !== null)
-  console.log(elements)
-  return elements
+  return results.filter((element: any) => element.poster_path !== null)
 }
 
 export const fetchCasts = async (url: string) => {
