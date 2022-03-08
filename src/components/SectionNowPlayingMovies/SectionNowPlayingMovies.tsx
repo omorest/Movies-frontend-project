@@ -23,7 +23,7 @@ const SectionNowPlayingMovies = () => {
     <>
       <CarouselMovies
         listMovies={nowPlayingMovies}
-        title={'Most populars movies'}
+        title={'Now playing movies'}
         isTypeGrid={true}
         onUpdateMovies={handlerPagination}
       />

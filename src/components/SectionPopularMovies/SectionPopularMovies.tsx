@@ -3,7 +3,7 @@ import { BASE_URL, KEY } from '../../../configs'
 import { fetchMovies } from '../../api'
 import CarouselMovies from '../CarouselMovies/CarouselMovies'
 
-const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=1`
+const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=`
 
 const SectionPopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState<any[]>([])
@@ -27,6 +27,7 @@ const SectionPopularMovies = () => {
         isTypeGrid={true}
         onUpdateMovies={handlerPagination}
       />
+      <h1>{page}</h1>
     </>
   )
 }
