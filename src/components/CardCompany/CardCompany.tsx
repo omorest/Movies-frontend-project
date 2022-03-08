@@ -19,11 +19,11 @@ const CardCompany:FC<CardCompanyProps> = ({ company }) => {
         borderWidth='3px'
         borderRadius='3px'
       >
-        <Box className="card-image">
+        <Box className="card-company-image">
           <Image src={urlImage} alt={name} borderRadius='3px' />
         </Box>
         <Box
-          className="card-text"
+          className="card-company-text"
           color='gray.500'
           fontWeight='semibold'
           letterSpacing='wide'
