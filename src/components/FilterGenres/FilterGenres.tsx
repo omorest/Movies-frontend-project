@@ -20,9 +20,7 @@ const FilterGenres: FC<FilterGenresProps> = ({ onFilterChange }) => {
   }, [value])
 
   useEffect(() => {
-    fetchGenres().then((res) => {
-      setGenres(res)
-    })
+    fetchGenres().then((res) => setGenres(res))
   }, [])
 
   const listCheckboxsGenres = genres.map(({ id, name }) => {
