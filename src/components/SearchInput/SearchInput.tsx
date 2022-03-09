@@ -3,13 +3,18 @@ import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Input } from '@chakra-ui/react'
 
-const SearchInput: FC<any> = () => {
+interface SearchInputProps {
+  onSearch: () => void
+}
+
+const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
   const [value, setValue] = useState<string>('')
   const handlerChange = (event: any) => setValue(event.target.value)
   const navigate = useNavigate()
   const handlerEnter = (event: any) => {
     event.preventDefault()
     navigate('/search', { state: { inputValue: value } })
+    onSearch()
   }
 
   return (
@@ -18,10 +23,11 @@ const SearchInput: FC<any> = () => {
         <Input
           placeholder='Cast, movie, production'
           size='lg'
-          focusBorderColor='pink.400'
+          focusBorderColor='blue.400'
           isFullWidth={false}
           width={'70%'}
           onChange={handlerChange}
+          borderColor='blue.400'
         />
       </form>
     </div>

@@ -66,6 +66,12 @@ const SearchPage = () => {
     setCompanies([...companies, ...newCompanies])
   }
 
+  const handlerInitialStatePages = () => {
+    setPageCompanies(1)
+    setPageMovies(1)
+    setPageCasts(1)
+  }
+
   const section: any = {
     casts:
       <>
@@ -101,7 +107,7 @@ const SearchPage = () => {
     <>
       <Navbar></Navbar>
       <br />
-      <SearchInput />
+      <SearchInput onSearch={handlerInitialStatePages}/>
       <br />
       <br />
       <div className="buttons">
