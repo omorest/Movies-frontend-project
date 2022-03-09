@@ -13,8 +13,8 @@ const CardMovie:FC<CardMovieProps> = ({ movie }) => {
 
   return (
     <div >
-      <Box w='200px' borderWidth='0px' overflow='hidden' className="card-movie">
-        <Image src={urlImage} alt={title} />
+      <Box w='200px'height='100%' borderWidth='0px' overflow='hidden' className="card-movie">
+        <Image src={urlImage} alt={title} height='100%'/>
       </Box>
     </div>
   )

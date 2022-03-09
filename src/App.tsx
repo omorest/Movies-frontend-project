@@ -6,7 +6,7 @@ import { Container } from '@chakra-ui/react'
 
 function App () {
   return (
-    <Container maxW='container.xl'>
+    <Container maxW='90%'>
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />

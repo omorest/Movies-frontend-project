@@ -24,7 +24,7 @@ const SectionNowPlayingMovies = () => {
       <CarouselMovies
         listMovies={nowPlayingMovies}
         title={'Now playing movies'}
-        isTypeGrid={true}
+        isTypeGrid={false}
         onUpdateMovies={handlerPagination}
       />
     </>
