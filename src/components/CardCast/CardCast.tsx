@@ -13,8 +13,8 @@ const CardCast:FC<CardCastProps> = ({ cast }) => {
 
   return (
     <>
-      <Box w='200px' overflow='hidden' className="card-cast" borderWidth='3px' borderRadius='3px'>
-        <Image src={urlImage} alt={name} borderRadius='3px'/>
+      <Box w='200px' className="card-cast" borderWidth='3px' borderRadius='3px'>
+        <Image src={urlImage} alt={name} borderRadius='3px' />
         <Box display='flex' alignItems='baseline' >
           <Box
             width='100%'
