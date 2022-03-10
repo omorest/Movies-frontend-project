@@ -35,4 +35,18 @@ export const fetchFilterMovies = async ({ genres, rate, releaseDate }: any) => {
   const data = await fetch(url)
   const { results } = await data.json()
   return results.filter((movie: any) => movie.poster_path !== null)
+
+export const fetchDetailsMovies = async (id: string) => {
+  const url = `${BASE_URL}/movie/${id}?api_key=${KEY}`
+  const data = await fetch(url)
+  const results = await data.json()
+  return results
+}
+
+export const fetchCastMovies = async (id: string, amountCasts: number) => {
+  const url = `${BASE_URL}/movie/${id}/credits?api_key=${KEY}`
+  const data = await fetch(url)
+  const { cast } = await data.json()
+  cast.length = amountCasts
+  return cast
 }
