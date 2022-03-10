@@ -35,6 +35,7 @@ export const fetchFilterMovies = async ({ genres, rate, releaseDate }: any) => {
   const data = await fetch(url)
   const { results } = await data.json()
   return results.filter((movie: any) => movie.poster_path !== null)
+}
 
 export const fetchDetailsMovies = async (id: string) => {
   const url = `${BASE_URL}/movie/${id}?api_key=${KEY}`

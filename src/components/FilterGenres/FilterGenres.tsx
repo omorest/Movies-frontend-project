@@ -24,7 +24,7 @@ const FilterGenres: FC<FilterGenresProps> = ({ onFilterChange }) => {
   }, [])
 
   const listCheckboxsGenres = genres.map(({ id, name }) => {
-    return <Checkbox {...getCheckboxProps({ value: id })} key={id}>{name}</Checkbox>
+    return <Checkbox {...getCheckboxProps({ value: name })} key={id}>{name}</Checkbox>
   })
 
   return (
