@@ -15,7 +15,7 @@ const DiscoverPage = () => {
   return (
     <>
       <Navbar />
-      <div>DiscoverPage</div>
+
       <div className="container-discover">
         <div className="filters">
           <FiltersMovies onSearchFilterMovies={handlerMovies}/>
