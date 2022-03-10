@@ -10,7 +10,7 @@ interface CarouselCastsProps {
 }
 
 const CarouselCasts: FC<CarouselCastsProps> = ({ listCasts, title, isTypeGrid = true }) => {
-  const typeViewCasts = isTypeGrid ? 'carousel' : 'gallery'
+  const typeViewCasts = isTypeGrid ? 'gallery' : 'carousel'
 
   return (
     <>

@@ -4,7 +4,7 @@ import CardMovie from '../CardMovie/CardMovie'
 import { Text } from '@chakra-ui/react'
 
 interface CarouselMoviesProps {
-  isTypeGrid: boolean,
+  isTypeGrid?: boolean,
   title?: string,
   listMovies: any,
   onUpdateMovies?: () => void
@@ -12,7 +12,7 @@ interface CarouselMoviesProps {
 
 const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid = true, onUpdateMovies }) => {
   const scrollRef = useRef<any>(null)
-  const typeViewMovies = isTypeGrid ? 'carousel-movies' : 'gallery-movies'
+  const typeViewMovies = isTypeGrid ? 'gallery-movies' : 'carousel-movies'
 
   const handleScroll = () => {
     const scrollWidth = scrollRef.current?.scrollWidth

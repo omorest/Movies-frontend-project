@@ -7,7 +7,7 @@ import DetailsPage from './pages/DetailsPage/DetailsPage'
 
 function App () {
   return (
-    <Container maxW='container.xl'>
+    <Container maxW='90%'>
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />

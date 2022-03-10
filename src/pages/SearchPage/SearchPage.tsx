@@ -75,21 +75,21 @@ const SearchPage = () => {
   const section: any = {
     casts:
       <>
-        <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={false} />
+        <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={true} />
         <br/>
         <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
         <br/>
       </>,
     companies:
       <>
-        <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={false} />
+        <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={true} />
         <br/>
         <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
         <br/>
       </>,
     movies:
       <>
-        <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={false} />
+        <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={true} />
         <br />
         <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
         <br />

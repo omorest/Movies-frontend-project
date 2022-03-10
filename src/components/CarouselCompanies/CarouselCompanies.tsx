@@ -9,7 +9,7 @@ interface CarouselCompaniesProps {
 }
 
 const CarouselCompanies: FC<CarouselCompaniesProps> = ({ listCompanies, title, isTypeGrid = true }) => {
-  const typeViewCompanies = isTypeGrid ? 'carousel' : 'gallery'
+  const typeViewCompanies = isTypeGrid ? 'gallery' : 'carousel'
 
   return (
     <>
