@@ -24,7 +24,6 @@ const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
           placeholder='Cast, movie, production'
           size='lg'
           focusBorderColor='blue.400'
-          isFullWidth={false}
           width={'70%'}
           onChange={handlerChange}
           borderColor='blue.400'

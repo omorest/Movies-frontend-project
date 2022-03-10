@@ -8,7 +8,6 @@ const DiscoverPage = () => {
   const [movies, setMovies] = useState<any[]>([])
   const handlerMovies = async (filters: any) => {
     const filteredMovies = await fetchFilterMovies(filters)
-    console.log(filteredMovies)
     setMovies(filteredMovies)
   }
 

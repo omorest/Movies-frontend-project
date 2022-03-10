@@ -48,6 +48,7 @@ export const fetchCastMovies = async (id: string, amountCasts: number) => {
   const url = `${BASE_URL}/movie/${id}/credits?api_key=${KEY}`
   const data = await fetch(url)
   const { cast } = await data.json()
-  cast.length = amountCasts
-  return cast
+  const castFiltered = cast.filter((element: any) => element.profile_path !== null && element.profile_path !== undefined)
+  castFiltered.length = amountCasts
+  return castFiltered
 }

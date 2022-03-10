@@ -14,7 +14,6 @@ const FilterGenres: FC<FilterGenresProps> = ({ onFilterChange }) => {
   const [genres, setGenres] = useState<any[]>([])
   const { value, getCheckboxProps } = useCheckboxGroup({ defaultValue: [] })
 
-  console.log(value)
   useEffect(() => {
     onFilterChange(value as string[])
   }, [value])

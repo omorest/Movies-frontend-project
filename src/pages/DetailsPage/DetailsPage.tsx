@@ -37,7 +37,7 @@ const DetailsPage = () => {
         <div className="header-details">
           <div className="main-info">
             <div className="title"><Text fontSize='5xl' as='b' textAlign='left'>{details.title}</Text></div>
-            <Text fontSize='xl' textAlign='left'><p className="overview">{details.overview}</p></Text>
+            <Text fontSize='xl' textAlign='left' className="overview">{details.overview}</Text>
           </div>
           <div className="img">
             <img src={urlImage} alt={details.title} />
