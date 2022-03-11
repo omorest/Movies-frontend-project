@@ -11,7 +11,7 @@ interface FilterMoviesProps {
 
 const FiltersMovies: FC<FilterMoviesProps> = ({ onSearchFilterMovies }) => {
   const [genres, setGenres] = useState<string[]>([])
-  const [rate, setRate] = useState<number>()
+  const [rate, setRate] = useState<number>(0)
   const [date, setDate] = useState<string>()
 
   const handlerGenres = (valueGenres: string[]) => setGenres(valueGenres)
