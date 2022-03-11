@@ -112,9 +112,9 @@ const SearchPage = () => {
       <br />
       <div className="buttons">
         <ButtonGroup variant='solid' spacing='6'>
-          <Button colorScheme='gray' onClick={handlerMovies}>Movies</Button>
-          <Button colorScheme='gray' onClick={handlerCast}>Casts</Button>
-          <Button colorScheme='gray' onClick={handlerCompanies}>Companies</Button>
+          <Button colorScheme="blackAlpha" backgroundColor="#171923" onClick={handlerMovies}>Movies</Button>
+          <Button colorScheme="blackAlpha" backgroundColor="#171923" onClick={handlerCast}>Casts</Button>
+          <Button colorScheme="blackAlpha" backgroundColor="#171923" onClick={handlerCompanies}>Companies</Button>
         </ButtonGroup>
       </div>
       <br />

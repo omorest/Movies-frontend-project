@@ -16,7 +16,7 @@ a {
   text-decoration: none;
 }
 a:visited {color: rgb(0, 0, 0);}
-a:hover {
+.links a:hover {
   color: rgb(116, 116, 116);
 }
 a:active {color: rgb(0, 0, 0);}

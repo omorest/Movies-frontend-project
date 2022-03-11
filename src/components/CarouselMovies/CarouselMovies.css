@@ -13,7 +13,8 @@
   background-color: #dfdfdf;
 }
 .carousel-movies::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.701);
+  /* background-color: #242424; */
+  background-color: #000000b3;
   border-radius: 10px;
 }
 

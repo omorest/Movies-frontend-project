@@ -28,7 +28,7 @@ const FiltersMovies: FC<FilterMoviesProps> = ({ onSearchFilterMovies }) => {
       <FilterGenres onFilterChange={handlerGenres}/>
       <FilterRate onFilterChange={handlerRate} sliderValue={rate}/>
       <FilterReleaseDate onFilterChange={handlerDate} dateValue={date}/>
-      <Button colorScheme='blue' onClick={handlerSearch}>Search</Button>
+      <Button colorScheme='blackAlpha' backgroundColor='#242424' onClick={handlerSearch}>Search</Button>
     </div>
   )
 }

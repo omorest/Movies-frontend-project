@@ -32,7 +32,7 @@ const FilterRate: FC<FilterRateProps> = ({ sliderValue, onFilterChange }) => {
         <SliderMark
           value={sliderValue || 0}
           textAlign='center'
-          bg='blue.500'
+          bg='blackAlpha.500'
           color='white'
           mt='-10'
           ml='-5'
@@ -40,18 +40,18 @@ const FilterRate: FC<FilterRateProps> = ({ sliderValue, onFilterChange }) => {
         >
         </SliderMark>
         <SliderTrack>
-          <SliderFilledTrack />
+          <SliderFilledTrack bg='blackAlpha.500'/>
         </SliderTrack>
 
         <Tooltip
           hasArrow
-          bg='blue.500'
+          bg='#242424'
           color='white'
           placement='bottom'
           isOpen={showTooltip}
           label={`${sliderValue}`}
         >
-          <SliderThumb />
+          <SliderThumb bg='#242424'/>
         </Tooltip>
       </Slider>
     </div>
