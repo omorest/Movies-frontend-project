@@ -19,9 +19,6 @@ const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid
     const scrollLeft = Math.trunc(scrollRef.current.scrollLeft)
     const clientWidth = scrollRef.current?.clientWidth
     const isScrollFinished = scrollWidth - scrollLeft === clientWidth
-    console.log(scrollWidth,
-      scrollLeft,
-      clientWidth)
     if (isScrollFinished) onUpdateMovies()
   }
 

@@ -1,5 +1,6 @@
 import { BASE_URL, KEY } from '../../configs'
-import { urlFavouritesMovies, urlPostFavouriteMovie, urlPostToken, urlRequestToken } from './urlsApi'
+import { urlPostToken, urlRequestToken } from './urlsApi'
+
 const urlFilterMovies = `${BASE_URL}/discover/movie?api_key=${KEY}`
 
 export const fetchMovies = async (url: string) => {
@@ -27,11 +28,11 @@ export const fetchGenres = async () => {
   return genres
 }
 
-export const fetchFilterMovies = async ({ genres, rate, releaseDate }: any) => {
+export const fetchFilterMovies = async ({ genres, rate, releaseDate }: any, page: number = 1) => {
   const urlParamGenres = (genres && genres.length > 0) ? `&with_genres=${genres.join(',')}` : ''
   const urlParamRate = rate ? `&vote_average.gte=${rate}` : ''
   const urlParamReleaseDate = releaseDate ? `&release_date.gte=${releaseDate}` : ''
-  const url = `${urlFilterMovies}${urlParamGenres}${urlParamRate}${urlParamReleaseDate}`
+  const url = `${urlFilterMovies}${urlParamGenres}${urlParamRate}${urlParamReleaseDate}&page=${page}`
 
   const data = await fetch(url)
   const { results } = await data.json()
