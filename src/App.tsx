@@ -4,15 +4,19 @@ import { Home, SearchPage } from './pages/'
 import DiscoverPage from './pages/DiscoverPage/DiscoverPage'
 import { Container } from '@chakra-ui/react'
 import DetailsPage from './pages/DetailsPage/DetailsPage'
+import LoggedPage from './pages/LoggedPage/LoggedPage'
+import FavouritesPage from './pages/FavouritesPage/FavouritesPage'
 
 function App () {
   return (
-    <Container maxW='90%'>
+    <Container maxW='85%'>
       <div className="App">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<SearchPage />} />
           <Route path='/discover' element={<DiscoverPage />} />
+          <Route path='/favourites' element={<FavouritesPage />} />
+          <Route path='/logged' element={<LoggedPage />} />
           <Route path='/details/:id/' element={<DetailsPage />} />
         </Routes>
       </div>

@@ -2,29 +2,57 @@ import './DetailsPage.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { BASE_URL_IMAGES } from '../../../configs'
-import { fetchCastMovies, fetchDetailsMovies } from '../../api'
+import { fetchAccountId, fetchCastMovies, fetchDetailsMovies, fetchFavouriteMovies, fetchPostFavouriteMovie } from '../../api'
 import { CarouselCasts, Navbar } from '../../components'
 import { Badge, Text } from '@chakra-ui/react'
+import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
 const DetailsPage = () => {
-  const { id } = useParams()
-  const [details, setDetails] = useState<any[]>([])
+  const [isLogged, setIsLogged] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [details, setDetails] = useState<any>()
+  const [accountId, setAccountId] = useState('')
   const [cast, setCast] = useState<any[]>([])
-  const urlImage = `${BASE_URL_IMAGES}${details.poster_path}`
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
 
+  const { id } = useParams()
   useEffect(() => {
-    fetchDetailsMovies(id as string).then((res: any[]) => setDetails(res))
-    fetchCastMovies(id as string, 10).then((res: any[]) => setCast(res))
-  }, [id])
+    const isLogged = Boolean(localStorage.getItem('sessionId'))
+    const request = async () => {
+      setIsLoading(true)
+      const detailsMovies = await fetchDetailsMovies(id as string)
+      const castMovie = await fetchCastMovies(id as string, 10)
+      setDetails(detailsMovies)
+      setCast(castMovie)
+      setIsLogged(isLogged)
+      if (isLogged) {
+        const accountId = await fetchAccountId(localStorage.getItem('sessionId') as string)
+        const favouriteMovies = await fetchFavouriteMovies(localStorage.getItem('sessionId') as string, accountId)
+        const isFavouriteMovie = favouriteMovies.find((movie: any) => movie.id === detailsMovies.id)
+        setAccountId(accountId)
+        isFavouriteMovie ? setIsFavourite(true) : setIsFavourite(false)
+      }
+      setIsLoading(false)
+    }
+    request()
+  }, [])
 
-  const genresBadges = details.genres?.map(({ name, id }: any) => {
-    return <Badge colorScheme='blue' key={id} >{name}</Badge>
-  })
+  if (isLoading) return <h2>Is loading</h2>
 
-  const productionCompanies = details.production_companies?.map(({ name, id }: any) => {
-    return <Text fontSize='m' textAlign='left' key={id}>{ name }</Text>
-  })
+  const handlerFavouriteMovie = () => {
+    fetchPostFavouriteMovie(localStorage.getItem('sessionId') as string, accountId, details.id as string, !isFavourite)
+      .then((response) => {
+        setIsFavourite(!isFavourite)
+      })
+      .catch((error) => {
+        console.error(error)
+        setIsFavourite(isFavourite)
+      })
+  }
 
+  const urlImage = `${BASE_URL_IMAGES}${details.poster_path}`
+  const genresBadges = details.genres?.map(({ name, id }: any) => <Badge colorScheme='blue' key={id} >{name}</Badge>)
+  const productionCompanies = details.production_companies?.map(({ name, id }: any) => <Text fontSize='m' textAlign='left' key={id}>{ name }</Text>)
   const budget = details.budget?.toLocaleString()
   const revenue = details.revenue?.toLocaleString()
 
@@ -38,6 +66,15 @@ const DetailsPage = () => {
           <div className="main-info">
             <div className="title"><Text fontSize='5xl' as='b' textAlign='left'>{details.title}</Text></div>
             <Text fontSize='xl' textAlign='left' className="overview">{details.overview}</Text>
+            {
+              isLogged
+                ? <div className="fav" onClick={handlerFavouriteMovie}>
+                  <Text fontSize='5xl' as='b' textAlign='left'>
+                    {isFavourite ? <BsHeartFill /> : <BsHeart/>}
+                  </Text>
+                </div>
+                : null
+            }
           </div>
           <div className="img">
             <img src={urlImage} alt={details.title} />
