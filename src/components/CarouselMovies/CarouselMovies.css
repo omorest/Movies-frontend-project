@@ -21,7 +21,6 @@
 .gallery-movies {
   display: flex;
   flex-wrap: wrap;
-  /* gap: 10px; */
   row-gap: 30px;
   padding: 20px 0px;
 }

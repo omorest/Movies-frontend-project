@@ -15,7 +15,10 @@ const FilterGenres: FC<FilterGenresProps> = ({ onFilterChange }) => {
   const { value, getCheckboxProps } = useCheckboxGroup({ defaultValue: [] })
 
   useEffect(() => {
-    onFilterChange(value as string[])
+    const arrayToObject = (arr: any, key: any) => Object.assign({}, ...arr.map((item: any) => ({ [item[key]]: item })))
+    const genresObject = arrayToObject(genres, 'name')
+    const genresArr = value.map(genre => genresObject[genre].id.toString())
+    onFilterChange(genresArr)
   }, [value])
 
   useEffect(() => {
