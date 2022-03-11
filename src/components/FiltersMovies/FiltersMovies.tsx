@@ -3,7 +3,7 @@ import FilterGenres from '../FilterGenres/FilterGenres'
 import FilterRate from '../FilterRate/FilterRate'
 import FilterReleaseDate from '../FilterReleaseDate/FilterReleaseDate'
 import { FC, useState } from 'react'
-import { Button } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react'
 
 interface FilterMoviesProps {
   onSearchFilterMovies: (filters: any) => void
@@ -22,6 +22,9 @@ const FiltersMovies: FC<FilterMoviesProps> = ({ onSearchFilterMovies }) => {
 
   return (
     <div className="filter-movies">
+      <div className="text">
+        <Text fontSize='2xl' as='b' textAlign='left'>Filters</Text>
+      </div>
       <FilterGenres onFilterChange={handlerGenres}/>
       <FilterRate onFilterChange={handlerRate} sliderValue={rate}/>
       <FilterReleaseDate onFilterChange={handlerDate} dateValue={date}/>

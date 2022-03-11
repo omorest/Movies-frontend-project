@@ -23,7 +23,7 @@ const SectionPopularMovies = () => {
     <>
       <CarouselMovies
         listMovies={popularMovies}
-        title={'Most populars movies'}
+        title={'Most popular movies'}
         isTypeGrid={false}
         onUpdateMovies={handlerPagination}
       />

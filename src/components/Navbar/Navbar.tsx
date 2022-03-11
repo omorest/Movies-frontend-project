@@ -1,6 +1,6 @@
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import { Button, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { fetchRequestToken } from '../../api'
 import { useEffect, useState } from 'react'
 
@@ -34,7 +34,9 @@ const Navbar = () => {
           <Link to="/discover">Discover</Link>
           {isLogged ? <Link to="/favourites">Favorites</Link> : null}
           {
-            isLogged ? <Button colorScheme='blue' onClick={handlerLogout}>Logout</Button> : <Button colorScheme='blue' onClick={handlerLogin}>Login</Button>
+            isLogged
+              ? <div className="log" onClick={handlerLogout}>Logout</div>
+              : <div className="log" onClick={handlerLogin}>Login</div>
           }
         </div>
       </div>

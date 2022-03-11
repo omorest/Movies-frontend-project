@@ -77,21 +77,21 @@ const SearchPage = () => {
       <>
         <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={true} />
         <br/>
-        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
+        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
         <br/>
       </>,
     companies:
       <>
         <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={true} />
         <br/>
-        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
+        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
         <br/>
       </>,
     movies:
       <>
         <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={true} />
         <br />
-        <Button colorScheme="blue" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
+        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
         <br />
       </>
   }
@@ -112,9 +112,9 @@ const SearchPage = () => {
       <br />
       <div className="buttons">
         <ButtonGroup variant='solid' spacing='6'>
-          <Button colorScheme='blue' onClick={handlerMovies}>Movies</Button>
-          <Button colorScheme='blue' onClick={handlerCast}>Casts</Button>
-          <Button colorScheme='blue' onClick={handlerCompanies}>Companies</Button>
+          <Button colorScheme='gray' onClick={handlerMovies}>Movies</Button>
+          <Button colorScheme='gray' onClick={handlerCast}>Casts</Button>
+          <Button colorScheme='gray' onClick={handlerCompanies}>Companies</Button>
         </ButtonGroup>
       </div>
       <br />

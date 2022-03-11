@@ -9,11 +9,11 @@
   height: 8px;
 }
 .carousel-movies::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.571);
   border-radius: 10px;
+  background-color: #dfdfdf;
 }
 .carousel-movies::-webkit-scrollbar-thumb {
-  background-color: #dfdfdf;
+  background-color: rgba(0, 0, 0, 0.701);
   border-radius: 10px;
 }
 

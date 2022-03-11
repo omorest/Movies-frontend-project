@@ -15,14 +15,14 @@ interface FilterRateProps {
 }
 
 const FilterRate: FC<FilterRateProps> = ({ sliderValue, onFilterChange }) => {
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(true)
 
   return (
     <div className="filter-rate">
       <div className="text-genre">Minimum rating</div>
       <Slider aria-label='slider-ex-1'
         className="slider"
-        defaultValue={5}
+        defaultValue={sliderValue}
         min={0}
         max={10}
         onChange={onFilterChange}
@@ -47,7 +47,7 @@ const FilterRate: FC<FilterRateProps> = ({ sliderValue, onFilterChange }) => {
           hasArrow
           bg='blue.500'
           color='white'
-          placement='top'
+          placement='bottom'
           isOpen={showTooltip}
           label={`${sliderValue}`}
         >

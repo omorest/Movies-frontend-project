@@ -1,5 +1,6 @@
 import './CarouselCompanies.css'
 import { FC } from 'react'
+import { Text } from '@chakra-ui/react'
 import CardCompany from '../CardCompany/CardCompany'
 
 interface CarouselCompaniesProps {
@@ -13,7 +14,9 @@ const CarouselCompanies: FC<CarouselCompaniesProps> = ({ listCompanies, title, i
 
   return (
     <>
-      <h2>{title}</h2>
+      <div className="text">
+        <Text fontSize='2xl' as='b' textAlign='left'>{title}</Text>
+      </div>
       <br/>
       <div className={typeViewCompanies}>
         {listCompanies?.map((company: any) => <CardCompany company={company} key={company.id} />)}

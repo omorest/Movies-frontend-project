@@ -1,7 +1,8 @@
 import './SearchInput.css'
+import { SearchIcon } from '@chakra-ui/icons'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Input } from '@chakra-ui/react'
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
 interface SearchInputProps {
   onSearch: () => void
@@ -19,15 +20,22 @@ const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
 
   return (
     <div className="search">
-      <form onSubmit={handlerEnter}>
-        <Input
-          placeholder='Cast, movie, production'
-          size='lg'
-          focusBorderColor='blue.400'
-          width={'70%'}
-          onChange={handlerChange}
-          borderColor='blue.400'
-        />
+      <form onSubmit={handlerEnter} className="form">
+        <InputGroup size='lg'>
+          <InputLeftElement
+            pointerEvents='none'
+            children={<SearchIcon color='#171923' />}
+          />
+          <Input
+            variant='flushed'
+            placeholder='Cast, movie, production'
+            // size='lg'
+            focusBorderColor='#171923'
+            onChange={handlerChange}
+            borderColor='#171923'
+            color='#171923'
+          />
+        </InputGroup>
       </form>
     </div>
   )
