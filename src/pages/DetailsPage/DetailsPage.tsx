@@ -5,7 +5,7 @@ import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 import { MovieDetails } from '../../api/movies/models'
-import { Badge, Text } from '@chakra-ui/react'
+import { Badge, Spinner, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
 
@@ -40,7 +40,14 @@ const DetailsPage = () => {
     request()
   }, [])
 
-  if (isLoading) return <h2>Is loading</h2>
+  if (isLoading) {
+    return <Spinner
+      thickness='4px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      size='xl'
+    />
+  }
 
   const handlerFavouriteMovie = () => {
     fetchPostFavouriteMovie(localStorage.getItem('sessionId') as string, accountId!, details?.id!, !isFavourite)

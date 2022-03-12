@@ -4,7 +4,7 @@ import { urlSearchCasts, urlSearchCompanies, urlSearchMovies } from '../../api/u
 import { fetchCast, fetchCompanies, fetchMovies } from '../../api'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { ButtonGroup, Button } from '@chakra-ui/react'
+import { ButtonGroup, Button, Spinner } from '@chakra-ui/react'
 import { Movie } from '../../api/movies/models'
 import { Cast } from '../../api/cast/model'
 import { Company } from '../../api/companies/model'
@@ -100,7 +100,14 @@ const SearchPage = () => {
     if (!isLoading) setList(listSelection)
   }, [typeSection, isLoading, movies, casts, companies])
 
-  if (isLoading) return <div>LOADING.....</div>
+  if (isLoading) {
+    return <Spinner
+      thickness='4px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      size='xl'
+    />
+  }
 
   return (
     <>
