@@ -2,22 +2,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .links{
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   gap: 20px;
 }
 
 a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
-}         /* Unvisited link  */
-a:visited {color: white;} /* Visited link    */
-a:hover {color: white;}   /* Mouse over link */
-a:active {color: white;}
+}
+a:visited {color: rgb(0, 0, 0);}
+.links a:hover {
+  color: rgb(116, 116, 116);
+}
+a:active {color: rgb(0, 0, 0);}
 
+
+.log {
+  cursor: pointer;
+}
+.log:hover {
+  color: rgb(116, 116, 116);
+}
 
 

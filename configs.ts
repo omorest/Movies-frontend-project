@@ -1,7 +1,7 @@
 const KEY = import.meta.env.VITE_KEY_TMDB
-const BASE_URL = import.meta.env.VITE_BASE
-const BASE_URL_IMAGES = import.meta.env.VITE_BASE_URL_IMAGES
-console.log(KEY)
+const BASE_URL = 'https://api.themoviedb.org/3'
+const BASE_URL_IMAGES = 'https://image.tmdb.org/t/p/w500'
+
 export {
   KEY,
   BASE_URL,
