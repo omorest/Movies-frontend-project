@@ -79,7 +79,7 @@ const DetailsPage = () => {
             {
               isLogged
                 ? <div className="fav" onClick={handlerFavouriteMovie}>
-                  <Text fontSize='5xl' as='b' textAlign='left'>
+                  <Text fontSize='5xl' as='b' textAlign='left' cursor='pointer'>
                     {isFavourite ? <BsHeartFill /> : <BsHeart/>}
                   </Text>
                 </div>
