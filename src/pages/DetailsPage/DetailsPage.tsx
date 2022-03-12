@@ -40,7 +40,7 @@ const DetailsPage = () => {
       setIsLoading(false)
     }
     request()
-  }, [])
+  }, [id])
 
   if (isLoading) {
     return <Spinner
@@ -95,11 +95,11 @@ const DetailsPage = () => {
         </div>
         <div className="generic-info">
           <div className="movies-cast">
+            <div className="casts">
+              <CarouselCasts title='Cast' isTypeGrid={false} listCasts={cast}/>
+            </div>
             <div className="similar-movies">
               <CarouselMovies title='Similar movies' isTypeGrid={false} listMovies={similarMovies}/>
-            </div>
-            <div className="casts">
-              <CarouselCasts title='Cast' isTypeGrid={true} listCasts={cast}/>
             </div>
           </div>
           <div className="extra-info">
@@ -132,6 +132,8 @@ const DetailsPage = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
     </>
   )
 }

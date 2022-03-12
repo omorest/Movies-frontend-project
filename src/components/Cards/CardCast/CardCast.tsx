@@ -14,9 +14,9 @@ const CardCast:FC<CardCastProps> = ({ cast }) => {
 
   return (
     <>
-      <Box w='200px' className="card-cast" borderWidth='3px' borderRadius='3px' >
+      <Box className="card-cast" borderWidth='3px' borderRadius='3px' >
         <div className="image">
-          <Image src={urlImage} alt={name} borderRadius='3px' />
+          <Image src={urlImage} alt={name} borderRadius='1px' />
         </div>
         <div className="text-cast">
           <Text fontSize='m' as='b' className="name-cast">{name}</Text>
