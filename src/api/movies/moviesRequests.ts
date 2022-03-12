@@ -22,7 +22,7 @@ export const fetchDetailsMovies = async (id: string): Promise<MovieDetails> => {
   return results
 }
 
-export const fetchTrailerMovie = async (id: string): Promise<TrailerMovie> => {
+export const fetchTrailerMovie = async (id: number): Promise<TrailerMovie> => {
   const url = `${BASE_URL}/movie/${id}/videos?api_key=${KEY}`
   const data = await fetch(url)
   const { results } = await data.json()
