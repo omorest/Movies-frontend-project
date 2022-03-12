@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { BASE_URL, KEY } from '../../../configs'
-import { fetchMovies } from '../../api'
-import { Movie } from '../../api/movies/models'
-import CarouselMovies from '../CarouselMovies/CarouselMovies'
-
-const urlPopularMovies = `${BASE_URL}/movie/popular?api_key=${KEY}&page=`
+import { urlPopularMovies } from '../../../api/urlsApi'
+import { CarouselMovies } from '../../Carousels'
+import { fetchMovies } from '../../../api'
+import { Movie } from '../../../api/movies/models'
 
 const SectionPopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState<Movie[]>([])
@@ -14,7 +12,7 @@ const SectionPopularMovies = () => {
 
   useEffect(() => {
     const requestMovies = async () => {
-      const movies: Movie[] = await fetchMovies(urlPopularMovies + page)
+      const movies: Movie[] = await fetchMovies(`${urlPopularMovies}&page=${page}`)
       setPopularMovies([...popularMovies, ...movies])
     }
     requestMovies().catch((err) => console.log(err))

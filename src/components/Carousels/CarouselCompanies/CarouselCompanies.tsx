@@ -1,8 +1,8 @@
 import './CarouselCompanies.css'
-import { FC } from 'react'
+import { CardCompany } from '../../Cards'
+import { Company } from '../../../api/companies/model'
 import { Text } from '@chakra-ui/react'
-import CardCompany from '../CardCompany/CardCompany'
-import { Company } from '../../api/companies/model'
+import { FC } from 'react'
 
 interface CarouselCompaniesProps {
   isTypeGrid: boolean,

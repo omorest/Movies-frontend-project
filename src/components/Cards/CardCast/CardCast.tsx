@@ -1,8 +1,8 @@
 import './CardCast.css'
-import { FC } from 'react'
+import { BASE_URL_IMAGES } from '../../../../configs'
 import { Box, Image } from '@chakra-ui/react'
-import { BASE_URL_IMAGES } from '../../../configs'
-import { Cast } from '../../api/cast/model'
+import { Cast } from '../../../api/cast/model'
+import { FC } from 'react'
 
 interface CardCastProps {
   cast: Cast

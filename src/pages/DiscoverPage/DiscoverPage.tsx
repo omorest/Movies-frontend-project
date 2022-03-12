@@ -1,11 +1,10 @@
 import './DiscoverPage.css'
+import { CarouselMovies, FiltersMovies, Navbar } from '../../components'
 import { useEffect, useState } from 'react'
-import { CarouselMovies, Navbar } from '../../components'
-import FiltersMovies from '../../components/FiltersMovies/FiltersMovies'
 import { fetchFilterMovies } from '../../api'
 import { Button, Text } from '@chakra-ui/react'
-import { Movie } from '../../api/movies/models'
 import { Filters } from '../../api/discover/model'
+import { Movie } from '../../api/movies/models'
 
 const DiscoverPage = () => {
   const [movies, setMovies] = useState<Movie[]>([])

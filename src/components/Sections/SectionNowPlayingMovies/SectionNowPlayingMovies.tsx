@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { BASE_URL, KEY } from '../../../configs'
-import { fetchMovies } from '../../api'
-import { Movie } from '../../api/movies/models'
-import CarouselMovies from '../CarouselMovies/CarouselMovies'
-
-const urlNowPlayingMovies = `${BASE_URL}/movie/now_playing?api_key=${KEY}&page=`
+import { urlNowPlayingMovies } from '../../../api/urlsApi'
+import { CarouselMovies } from '../../Carousels'
+import { fetchMovies } from '../../../api'
+import { Movie } from '../../../api/movies/models'
 
 const SectionNowPlayingMovies = () => {
   const [nowPlayingMovies, setNowPlayingMovies] = useState<Movie[]>([])
@@ -14,7 +12,7 @@ const SectionNowPlayingMovies = () => {
 
   useEffect(() => {
     const requestMovies = async () => {
-      const movies: Movie[] = await fetchMovies(urlNowPlayingMovies + page)
+      const movies: Movie[] = await fetchMovies(`${urlNowPlayingMovies}&page=${page}`)
       setNowPlayingMovies([...nowPlayingMovies, ...movies])
     }
     requestMovies().catch((err) => console.log(err))

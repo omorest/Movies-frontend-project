@@ -1,10 +1,10 @@
 import './FilterGenres.css'
 import { FC, useEffect, useState } from 'react'
+import { fetchGenres } from '../../../api'
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem,
   AccordionPanel, Checkbox, CheckboxGroup, useCheckboxGroup
 } from '@chakra-ui/react'
-import { fetchGenres } from '../../api'
 
 interface FilterGenresProps {
   onFilterChange: (value: string[]) => void

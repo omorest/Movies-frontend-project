@@ -1,8 +1,8 @@
 import './CardCompany.css'
 import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
-import { BASE_URL_IMAGES } from '../../../configs'
-import { Company } from '../../api/companies/model'
+import { Company } from '../../../api/companies/model'
+import { BASE_URL_IMAGES } from '../../../../configs'
 
 interface CardCompanyProps {
   company: Company

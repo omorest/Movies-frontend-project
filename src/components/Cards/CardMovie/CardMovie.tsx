@@ -1,9 +1,9 @@
 import './CardMovie.css'
 import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
-import { BASE_URL_IMAGES } from '../../../configs'
 import { Link } from 'react-router-dom'
-import { Movie } from '../../api/movies/models'
+import { Movie } from '../../../api/movies/models'
+import { BASE_URL_IMAGES } from '../../../../configs'
 
 interface CardMovieProps {
   movie: Movie

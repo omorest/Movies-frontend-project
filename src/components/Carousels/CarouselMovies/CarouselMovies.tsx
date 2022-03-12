@@ -1,8 +1,8 @@
 import './CarouselMovies.css'
 import { FC, useRef } from 'react'
 import { Text } from '@chakra-ui/react'
-import { Movie } from '../../api/movies/models'
-import CardMovie from '../CardMovie/CardMovie'
+import { Movie } from '../../../api/movies/models'
+import { CardMovie } from '../../Cards'
 
 interface CarouselMoviesProps {
   title?: string,

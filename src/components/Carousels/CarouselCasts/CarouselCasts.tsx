@@ -1,8 +1,8 @@
 import './CarouselCasts.css'
-import { FC } from 'react'
-import CardCast from '../CardCast/CardCast'
+import { CardCast } from '../../Cards'
 import { Text } from '@chakra-ui/react'
-import { Cast } from '../../api/cast/model'
+import { Cast } from '../../../api/cast/model'
+import { FC } from 'react'
 
 interface CarouselCastsProps {
   isTypeGrid: boolean,
