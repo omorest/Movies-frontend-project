@@ -12,11 +12,9 @@ const LoggedPage = () => {
   useEffect(() => {
     const requestSession = async () => {
       const query = new URLSearchParams(location.search)
-      console.log(query)
       const denied = query.get('denied') === 'true'
       setIsDenied(denied)
       if (!denied) {
-        console.log('holaa')
         setIsDenied(false)
         const requestTokenValidated = query.get('request_token')
         const sessionId = await fetchPostToken(requestTokenValidated as string)
