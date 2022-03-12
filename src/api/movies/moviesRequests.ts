@@ -7,11 +7,11 @@ export const fetchMovies = async (url: string):Promise<Movie[]> => {
   return results.filter((movie: any) => movie.poster_path !== null)
 }
 
-export const fetchSimilarMovies = async (id: string):Promise<Movie[]> => {
+export const fetchSimilarMovies = async (id: string, amountMovies: number):Promise<Movie[]> => {
   const data = await fetch(`${BASE_URL}/movie/${id}/similar?api_key=${KEY}`)
   const { results } = await data.json()
   const resultsFiltered = results.filter((movie: any) => movie.poster_path !== null)
-  resultsFiltered.length = 5
+  resultsFiltered.length = amountMovies
   return resultsFiltered
 }
 
@@ -20,4 +20,11 @@ export const fetchDetailsMovies = async (id: string): Promise<MovieDetails> => {
   const data = await fetch(url)
   const results = await data.json()
   return results
+}
+
+export const fetchTrailerMovie = async (id: string): Promise<object> => {
+  const url = `${BASE_URL}/movie/${id}/videos?api_key=${KEY}`
+  const data = await fetch(url)
+  const { results } = await data.json()
+  return results[0] || []
 }

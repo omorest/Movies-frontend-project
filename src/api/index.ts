@@ -1,6 +1,6 @@
 import { fetchAccountId, fetchFavouriteMovies, fetchPostFavouriteMovie } from './account/accountRequests'
 import { fetchPostToken, fetchRequestToken } from './session/sessionRequests'
-import { fetchDetailsMovies, fetchMovies, fetchSimilarMovies } from './movies/moviesRequests'
+import { fetchDetailsMovies, fetchMovies, fetchSimilarMovies, fetchTrailerMovie } from './movies/moviesRequests'
 import { fetchCast, fetchCastMovies } from './cast/castRequests'
 import { fetchCompanies } from './companies/companiesRequests'
 import { fetchFilterMovies } from './discover/discoverRequests'
@@ -19,5 +19,6 @@ export {
   fetchSimilarMovies,
   fetchDetailsMovies,
   fetchRequestToken,
+  fetchTrailerMovie,
   fetchPostToken
 }
