@@ -1,13 +1,13 @@
 import './DetailsPage.css'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { BASE_URL_IMAGES } from '../../../configs'
-import { fetchAccountId, fetchCastMovies, fetchDetailsMovies, fetchFavouriteMovies, fetchPostFavouriteMovie } from '../../api'
+import { fetchCastMovies, fetchDetailsMovies, fetchAccountId, fetchFavouriteMovies, fetchPostFavouriteMovie } from '../../api/'
 import { CarouselCasts, Navbar } from '../../components'
-import { Badge, Text } from '@chakra-ui/react'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
-import { Cast } from '../../api/cast/model'
+import { useEffect, useState } from 'react'
+import { BASE_URL_IMAGES } from '../../../configs'
 import { MovieDetails } from '../../api/movies/models'
+import { Badge, Text } from '@chakra-ui/react'
+import { useParams } from 'react-router-dom'
+import { Cast } from '../../api/cast/model'
 
 const DetailsPage = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false)

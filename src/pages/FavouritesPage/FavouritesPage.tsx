@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import { fetchAccountId, fetchFavouriteMovies } from '../../api'
-import { Movie } from '../../api/movies/models'
+import { fetchAccountId, fetchFavouriteMovies } from '../../api/'
 import { CarouselMovies, Navbar } from '../../components'
+import { useEffect, useState } from 'react'
+import { Movie } from '../../api/movies/models'
 
 const FavouritesPage = () => {
   const [favouriteMovies, setFavouriteMovies] = useState<Movie[]>([])

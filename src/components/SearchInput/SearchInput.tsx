@@ -1,8 +1,8 @@
 import './SearchInput.css'
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
 interface SearchInputProps {
   onSearch?: () => void

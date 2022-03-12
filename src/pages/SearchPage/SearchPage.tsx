@@ -1,13 +1,13 @@
 import './SearchPage.css'
+import { CarouselMovies, Navbar, SearchInput, CarouselCasts, CarouselCompanies } from '../../components'
+import { urlSearchCasts, urlSearchCompanies, urlSearchMovies } from '../../api/urlsApi'
+import { fetchCast, fetchCompanies, fetchMovies } from '../../api'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { fetchCasts, fetchCompanies, fetchMovies } from '../../api'
-import { CarouselMovies, Navbar, SearchInput, CarouselCasts, CarouselCompanies } from '../../components'
 import { ButtonGroup, Button } from '@chakra-ui/react'
 import { Movie } from '../../api/movies/models'
 import { Cast } from '../../api/cast/model'
 import { Company } from '../../api/companies/model'
-import { urlSearchCasts, urlSearchCompanies, urlSearchMovies } from '../../api/urlsApi'
 
 const SearchPage = () => {
   const [pageMovies, setPageMovies] = useState<number>(1)
@@ -30,7 +30,7 @@ const SearchPage = () => {
     const requestMovies = async () => {
       setIsLoading(true)
       const movies = await fetchMovies(urlSearchMovies + urlParamsMovies)
-      const casts = await fetchCasts(urlSearchCasts + urlParamsCasts)
+      const casts = await fetchCast(urlSearchCasts + urlParamsCasts)
       const companies = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
       setMovies(movies)
       setCasts(casts)
@@ -54,7 +54,7 @@ const SearchPage = () => {
   const handlerNewCasts = async () => {
     setPageCasts(pageCasts + 1)
     const urlParamsCasts = `&page=${pageCasts + 1}&query=${inputValue}`
-    const newCasts = await fetchCasts(urlSearchCasts + urlParamsCasts)
+    const newCasts = await fetchCast(urlSearchCasts + urlParamsCasts)
     setCasts([...casts, ...newCasts])
   }
 

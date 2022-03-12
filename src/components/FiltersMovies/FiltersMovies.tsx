@@ -1,10 +1,10 @@
 import './FiltersMovies.css'
-import FilterGenres from '../FilterGenres/FilterGenres'
-import FilterRate from '../FilterRate/FilterRate'
-import FilterReleaseDate from '../FilterReleaseDate/FilterReleaseDate'
 import { FC, useState } from 'react'
 import { Button, Text } from '@chakra-ui/react'
 import { Filters } from '../../api/discover/model'
+import FilterGenres from '../FilterGenres/FilterGenres'
+import FilterRate from '../FilterRate/FilterRate'
+import FilterReleaseDate from '../FilterReleaseDate/FilterReleaseDate'
 
 interface FilterMoviesProps {
   onSearchFilterMovies: (filters: Filters) => void
