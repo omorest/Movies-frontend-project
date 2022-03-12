@@ -1,11 +1,11 @@
 import './SearchInput.css'
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
 interface SearchInputProps {
-  onSearch: () => void
+  onSearch?: () => void
 }
 
 const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
@@ -15,7 +15,7 @@ const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
   const handlerEnter = (event: any) => {
     event.preventDefault()
     navigate('/search', { state: { inputValue: value } })
-    onSearch()
+    if (onSearch) onSearch()
   }
 
   return (
@@ -24,12 +24,12 @@ const SearchInput: FC<SearchInputProps> = ({ onSearch }) => {
         <InputGroup size='lg'>
           <InputLeftElement
             pointerEvents='none'
-            children={<SearchIcon color='#171923' />}
-          />
+          >
+            {<SearchIcon color='#171923' />}
+          </InputLeftElement>
           <Input
             variant='flushed'
             placeholder='Cast, movie, production'
-            // size='lg'
             focusBorderColor='#171923'
             onChange={handlerChange}
             borderColor='#171923'

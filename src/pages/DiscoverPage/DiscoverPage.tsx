@@ -1,13 +1,15 @@
 import './DiscoverPage.css'
+import { CarouselMovies, FiltersMovies, Navbar } from '../../components'
 import { useEffect, useState } from 'react'
-import { CarouselMovies, Navbar } from '../../components'
-import FiltersMovies from '../../components/FiltersMovies/FiltersMovies'
 import { fetchFilterMovies } from '../../api'
-import { Button, Text } from '@chakra-ui/react'
+import { Button, Spinner, Text } from '@chakra-ui/react'
+import { Filters } from '../../api/discover/model'
+import { Movie } from '../../api/movies/models'
 
 const DiscoverPage = () => {
-  const [movies, setMovies] = useState<any[]>([])
-  const [filters, setFilters] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [filters, setFilters] = useState<Filters>()
   const [pageMovies, setPageMovies] = useState(1)
 
   const handlerMovies = async (filters: any) => {
@@ -26,12 +28,23 @@ const DiscoverPage = () => {
 
   useEffect(() => {
     const getFirstMovies = async () => {
+      setIsLoading(true)
       const firstMovies = await fetchFilterMovies({ genres: [], rate: 0, releaseDate: '' }, 1)
       setMovies(firstMovies)
       setFilters({ genres: [], rate: 0, releaseDate: '' })
+      setIsLoading(false)
     }
     getFirstMovies()
   }, [])
+
+  if (isLoading) {
+    return <Spinner
+      thickness='4px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      size='xl'
+    />
+  }
 
   return (
     <div className="discover">

@@ -1,11 +1,10 @@
+import { MoviesSections, Navbar, SearchInput } from '../../components'
 import './Home.css'
-import { Navbar, SearchInput } from '../../components'
-import MoviesSections from '../../components/MoviesSections/MoviesSections'
 
 const Home = () => {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <br />
       <SearchInput/>
       <br />

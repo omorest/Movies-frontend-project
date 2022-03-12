@@ -1,25 +1,24 @@
-import CardCast from './CardCast/CardCast'
-import CardCompany from './CardCompany/CardCompany'
-import CardMovie from './CardMovie/CardMovie'
-import CarouselCasts from './CarouselCasts/CarouselCasts'
-import CarouselCompanies from './CarouselCompanies/CarouselCompanies'
-import CarouselMovies from './CarouselMovies/CarouselMovies'
-import MoviesSections from './MoviesSections/MoviesSections'
-import Navbar from './Navbar/Navbar'
+import { MoviesSections, SectionNowPlayingMovies, SectionPopularMovies } from './Sections'
+import { CarouselCasts, CarouselCompanies, CarouselMovies } from './Carousels'
+import { FilterGenres, FilterRate, FilterReleaseDate, FiltersMovies } from './Filters'
+import { CardCast, CardCompany, CardMovie } from './Cards'
 import SearchInput from './SearchInput/SearchInput'
-import SectionNowPlayingMovies from './SectionNowPlayingMovies/SectionNowPlayingMovies'
-import SectionPopularMovies from './SectionPopularMovies/SectionPopularMovies'
+import Navbar from './Navbar/Navbar'
 
 export {
   CardMovie,
-  CarouselMovies,
   CardCast,
-  SearchInput,
   CardCompany,
-  CarouselCasts,
+  CarouselMovies,
   CarouselCompanies,
-  Navbar,
+  CarouselCasts,
+  FilterReleaseDate,
+  FiltersMovies,
+  FilterRate,
+  FilterGenres,
+  SearchInput,
   MoviesSections,
   SectionPopularMovies,
-  SectionNowPlayingMovies
+  SectionNowPlayingMovies,
+  Navbar
 }
