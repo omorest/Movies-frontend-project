@@ -1,11 +1,7 @@
 import './App.css'
+import { Home, LoggedPage, SearchPage, DiscoverPage, FavouritesPage, DetailsPage } from './pages/'
 import { Route, Routes } from 'react-router-dom'
-import { Home, SearchPage } from './pages/'
-import DiscoverPage from './pages/DiscoverPage/DiscoverPage'
 import { Container } from '@chakra-ui/react'
-import DetailsPage from './pages/DetailsPage/DetailsPage'
-import LoggedPage from './pages/LoggedPage/LoggedPage'
-import FavouritesPage from './pages/FavouritesPage/FavouritesPage'
 
 function App () {
   return (

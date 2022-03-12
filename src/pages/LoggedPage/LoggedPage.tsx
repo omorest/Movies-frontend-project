@@ -1,8 +1,8 @@
 import './LoggedPage.css'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { fetchPostToken } from '../../api'
 import { Button, Text } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 
 const LoggedPage = () => {
   const [isDenied, setIsDenied] = useState<boolean>()
@@ -15,11 +15,10 @@ const LoggedPage = () => {
       const denied = query.get('denied') === 'true'
       setIsDenied(denied)
       if (!denied) {
-        console.log('holaa')
         setIsDenied(false)
         const requestTokenValidated = query.get('request_token')
-        const sessionID = await fetchPostToken(requestTokenValidated as string)
-        localStorage.setItem('sessionId', sessionID)
+        const sessionId = await fetchPostToken(requestTokenValidated as string)
+        localStorage.setItem('sessionId', sessionId)
       }
     }
     requestSession()
