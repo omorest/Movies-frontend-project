@@ -53,8 +53,9 @@ const DetailsPage = () => {
   const urlImage = `${BASE_URL_IMAGES}${details.poster_path}`
   const genresBadges = details.genres?.map(({ name, id }: any) => <Badge colorScheme='blue' key={id} >{name}</Badge>)
   const productionCompanies = details.production_companies?.map(({ name, id }: any) => <Text fontSize='m' textAlign='left' key={id}>{ name }</Text>)
-  const budget = details.budget?.toLocaleString()
-  const revenue = details.revenue?.toLocaleString()
+  const dollarFormatter = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+  const budget = dollarFormatter.format(details?.budget || 0)
+  const revenue = dollarFormatter.format(details?.revenue || 0)
 
   return (
     <>
@@ -105,11 +106,11 @@ const DetailsPage = () => {
             </div>
             <div className="budget">
               <Text fontSize='xl' as='b' textAlign='left'>Budget</Text>
-              <Text fontSize='lg' textAlign='left'>${budget}</Text>
+              <Text fontSize='lg' textAlign='left'>{budget}</Text>
             </div>
             <div className="revenue">
               <Text fontSize='xl' as='b' textAlign='left'>Revenue</Text>
-              <Text fontSize='lg' textAlign='left'>${revenue}</Text>
+              <Text fontSize='lg' textAlign='left'>{revenue}</Text>
             </div>
           </div>
         </div>

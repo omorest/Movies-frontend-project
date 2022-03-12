@@ -2,11 +2,12 @@ import './CarouselCasts.css'
 import { FC } from 'react'
 import CardCast from '../CardCast/CardCast'
 import { Text } from '@chakra-ui/react'
+import { Cast } from '../../api/cast/model'
 
 interface CarouselCastsProps {
   isTypeGrid: boolean,
   title?: string,
-  listCasts: any
+  listCasts: Cast[]
 }
 
 const CarouselCasts: FC<CarouselCastsProps> = ({ listCasts, title, isTypeGrid = true }) => {

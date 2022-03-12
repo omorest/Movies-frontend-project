@@ -2,9 +2,10 @@ import './CardCompany.css'
 import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
+import { Company } from '../../api/companies/model'
 
 interface CardCompanyProps {
-  company: any
+  company: Company
 }
 
 const CardCompany:FC<CardCompanyProps> = ({ company }) => {

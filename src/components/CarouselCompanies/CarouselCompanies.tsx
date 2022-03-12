@@ -2,11 +2,12 @@ import './CarouselCompanies.css'
 import { FC } from 'react'
 import { Text } from '@chakra-ui/react'
 import CardCompany from '../CardCompany/CardCompany'
+import { Company } from '../../api/companies/model'
 
 interface CarouselCompaniesProps {
   isTypeGrid: boolean,
   title?: string,
-  listCompanies: any
+  listCompanies: Company[]
 }
 
 const CarouselCompanies: FC<CarouselCompaniesProps> = ({ listCompanies, title, isTypeGrid = true }) => {

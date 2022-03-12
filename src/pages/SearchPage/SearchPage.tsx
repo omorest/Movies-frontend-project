@@ -1,25 +1,24 @@
 import './SearchPage.css'
 import { ReactElement, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { BASE_URL, KEY } from '../../../configs'
 import { fetchCasts, fetchCompanies, fetchMovies } from '../../api'
 import { CarouselMovies, Navbar, SearchInput, CarouselCasts, CarouselCompanies } from '../../components'
 import { ButtonGroup, Button } from '@chakra-ui/react'
-
-const urlSearchMovies = `${BASE_URL}/search/movie?api_key=${KEY}`
-const urlSearchCasts = `${BASE_URL}/search/person?api_key=${KEY}`
-const urlSearchCompanies = `${BASE_URL}/search/company?api_key=${KEY}`
+import { Movie } from '../../api/movies/models'
+import { Cast } from '../../api/cast/model'
+import { Company } from '../../api/companies/model'
+import { urlSearchCasts, urlSearchCompanies, urlSearchMovies } from '../../api/urlsApi'
 
 const SearchPage = () => {
-  const [pageMovies, setPageMovies] = useState(1)
-  const [pageCasts, setPageCasts] = useState(1)
-  const [pageCompanies, setPageCompanies] = useState(1)
-  const [isLoading, setIsLoading] = useState(true)
+  const [pageMovies, setPageMovies] = useState<number>(1)
+  const [pageCasts, setPageCasts] = useState<number>(1)
+  const [pageCompanies, setPageCompanies] = useState<number>(1)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [typeSection, setTypeSection] = useState('movies')
   const [list, setList] = useState<ReactElement>()
-  const [movies, setMovies] = useState<any[]>([])
-  const [casts, setCasts] = useState<any[]>([])
-  const [companies, setCompanies] = useState<any[]>([])
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [casts, setCasts] = useState<Cast[]>([])
+  const [companies, setCompanies] = useState<Company[]>([])
   const location = useLocation()
   const { inputValue } = location.state as any
 

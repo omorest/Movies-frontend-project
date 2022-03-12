@@ -2,9 +2,10 @@ import './CardCast.css'
 import { FC } from 'react'
 import { Box, Image } from '@chakra-ui/react'
 import { BASE_URL_IMAGES } from '../../../configs'
+import { Cast } from '../../api/cast/model'
 
 interface CardCastProps {
-  cast: any
+  cast: Cast
 }
 
 const CardCast:FC<CardCastProps> = ({ cast }) => {

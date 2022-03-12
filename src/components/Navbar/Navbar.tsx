@@ -1,12 +1,12 @@
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Text } from '@chakra-ui/react'
 import { fetchRequestToken } from '../../api'
 import { useEffect, useState } from 'react'
 
 const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false)
-
+  const navigate = useNavigate()
   const handlerLogin = async () => {
     const requestToken = await fetchRequestToken()
     const url = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:3000/logged`
@@ -15,6 +15,7 @@ const Navbar = () => {
 
   const handlerLogout = () => {
     localStorage.removeItem('sessionId')
+    navigate('/')
     setIsLogged(false)
   }
 

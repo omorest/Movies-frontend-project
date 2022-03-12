@@ -4,10 +4,12 @@ import { CarouselMovies, Navbar } from '../../components'
 import FiltersMovies from '../../components/FiltersMovies/FiltersMovies'
 import { fetchFilterMovies } from '../../api'
 import { Button, Text } from '@chakra-ui/react'
+import { Movie } from '../../api/movies/models'
+import { Filters } from '../../api/discover/model'
 
 const DiscoverPage = () => {
-  const [movies, setMovies] = useState<any[]>([])
-  const [filters, setFilters] = useState()
+  const [movies, setMovies] = useState<Movie[]>([])
+  const [filters, setFilters] = useState<Filters>()
   const [pageMovies, setPageMovies] = useState(1)
 
   const handlerMovies = async (filters: any) => {

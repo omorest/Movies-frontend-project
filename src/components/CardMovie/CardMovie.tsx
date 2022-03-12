@@ -3,19 +3,20 @@ import { Box, Image } from '@chakra-ui/react'
 import { FC } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 import { Link } from 'react-router-dom'
+import { Movie } from '../../api/movies/models'
 
 interface CardMovieProps {
-  movie: any
+  movie: Movie
 }
 
 const CardMovie:FC<CardMovieProps> = ({ movie }) => {
-  const { title, poster_path: posterPath } = movie
+  const { title, poster_path: posterPath, id } = movie
   const urlImage = `${BASE_URL_IMAGES}${posterPath}`
 
   return (
     <div >
       <div >
-        <Link to={`/details/${movie.id}`}>
+        <Link to={`/details/${id}`}>
           <Box w='200px' borderWidth='0px' overflow='hidden' className="card-movie" >
             <Image src={urlImage} alt={title} />
           </Box>

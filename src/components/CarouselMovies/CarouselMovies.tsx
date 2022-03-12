@@ -2,11 +2,12 @@ import './CarouselMovies.css'
 import { FC, useRef } from 'react'
 import CardMovie from '../CardMovie/CardMovie'
 import { Text } from '@chakra-ui/react'
+import { Movie } from '../../api/movies/models'
 
 interface CarouselMoviesProps {
-  isTypeGrid?: boolean,
   title?: string,
-  listMovies: any,
+  isTypeGrid?: boolean,
+  listMovies: Movie[],
   onUpdateMovies?: () => void
 }
 
@@ -19,7 +20,7 @@ const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid
     const scrollLeft = Math.trunc(scrollRef.current.scrollLeft)
     const clientWidth = scrollRef.current?.clientWidth
     const isScrollFinished = scrollWidth - scrollLeft === clientWidth
-    if (isScrollFinished) onUpdateMovies()
+    if (isScrollFinished && onUpdateMovies) onUpdateMovies()
   }
 
   return (

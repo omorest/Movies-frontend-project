@@ -4,9 +4,10 @@ import FilterRate from '../FilterRate/FilterRate'
 import FilterReleaseDate from '../FilterReleaseDate/FilterReleaseDate'
 import { FC, useState } from 'react'
 import { Button, Text } from '@chakra-ui/react'
+import { Filters } from '../../api/discover/model'
 
 interface FilterMoviesProps {
-  onSearchFilterMovies: (filters: any) => void
+  onSearchFilterMovies: (filters: Filters) => void
 }
 
 const FiltersMovies: FC<FilterMoviesProps> = ({ onSearchFilterMovies }) => {
