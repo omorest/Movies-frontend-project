@@ -1,29 +1,41 @@
 import './DetailsPage.css'
-import { fetchCastMovies, fetchDetailsMovies, fetchAccountId, fetchFavouriteMovies, fetchPostFavouriteMovie } from '../../api/'
-import { CarouselCasts, Navbar } from '../../components'
+import { CarouselCasts, CarouselMovies, Navbar } from '../../components'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
-import { MovieDetails } from '../../api/movies/models'
+import { Movie, MovieDetails, TrailerMovie } from '../../api/movies/models'
 import { Badge, Spinner, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
+import {
+  fetchCastMovies, fetchDetailsMovies,
+  fetchAccountId, fetchFavouriteMovies,
+  fetchPostFavouriteMovie, fetchSimilarMovies, fetchTrailerMovie
+} from '../../api/'
+
+const urlYoutube = 'https://www.youtube.com/watch?v='
 
 const DetailsPage = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [details, setDetails] = useState<MovieDetails>()
+  const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
   const [accountId, setAccountId] = useState<number>()
   const [cast, setCast] = useState<Cast[]>([])
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
-
+  const [trailerMovie, setTrailerMovie] = useState<TrailerMovie>()
   const { id } = useParams()
+
   useEffect(() => {
     const isLogged = Boolean(localStorage.getItem('sessionId'))
     const request = async () => {
       setIsLoading(true)
       const detailsMovies = await fetchDetailsMovies(id as string)
       const castMovie = await fetchCastMovies(id as string, 10)
+      const similarMovies = await fetchSimilarMovies(id as string, 5)
+      const trailer = await fetchTrailerMovie(id as string)
+      setTrailerMovie(trailer)
+      setSimilarMovies(similarMovies)
       setDetails(detailsMovies)
       setCast(castMovie)
       setIsLogged(isLogged)
@@ -37,7 +49,7 @@ const DetailsPage = () => {
       setIsLoading(false)
     }
     request()
-  }, [])
+  }, [id])
 
   if (isLoading) {
     return <Spinner
@@ -85,14 +97,28 @@ const DetailsPage = () => {
                 </div>
                 : null
             }
+            {
+              trailerMovie
+                ? <div className="title">
+                  <a href={`${urlYoutube}${trailerMovie.key}`} target="_blank" rel="noreferrer">
+                    <Text fontSize='2xl' as='b' textAlign='left'>Watch trailer</Text>
+                  </a>
+                </div>
+                : null
+            }
           </div>
           <div className="img">
             <img src={urlImage} alt={details?.title} />
           </div>
         </div>
         <div className="generic-info">
-          <div className="casts">
-            <CarouselCasts title='Cast' isTypeGrid={true} listCasts={cast}/>
+          <div className="movies-cast">
+            <div className="casts">
+              <CarouselCasts title='Cast' isTypeGrid={false} listCasts={cast}/>
+            </div>
+            <div className="similar-movies">
+              <CarouselMovies title='Similar movies' isTypeGrid={false} listMovies={similarMovies}/>
+            </div>
           </div>
           <div className="extra-info">
             <div className="release-date">
@@ -124,6 +150,8 @@ const DetailsPage = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
     </>
   )
 }
