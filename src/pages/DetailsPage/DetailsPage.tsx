@@ -3,7 +3,7 @@ import { CarouselCasts, CarouselMovies, Navbar } from '../../components'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
-import { Movie, MovieDetails } from '../../api/movies/models'
+import { Movie, MovieDetails, TrailerMovie } from '../../api/movies/models'
 import { Badge, Spinner, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
@@ -23,7 +23,7 @@ const DetailsPage = () => {
   const [accountId, setAccountId] = useState<number>()
   const [cast, setCast] = useState<Cast[]>([])
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
-  const [trailerMovie, setTrailerMovie] = useState<object>({})
+  const [trailerMovie, setTrailerMovie] = useState<TrailerMovie>()
   const { id } = useParams()
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const DetailsPage = () => {
             {
               trailerMovie
                 ? <div className="title">
-                  <a href={`${urlYoutube}${trailerMovie.key}`}>
+                  <a href={`${urlYoutube}${trailerMovie.key}`} target="_blank" rel="noreferrer">
                     <Text fontSize='2xl' as='b' textAlign='left'>Watch trailer</Text>
                   </a>
                 </div>
