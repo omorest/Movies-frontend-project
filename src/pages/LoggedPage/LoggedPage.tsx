@@ -19,8 +19,8 @@ const LoggedPage = () => {
         console.log('holaa')
         setIsDenied(false)
         const requestTokenValidated = query.get('request_token')
-        const sessionID = await fetchPostToken(requestTokenValidated as string)
-        localStorage.setItem('sessionId', sessionID)
+        const sessionId = await fetchPostToken(requestTokenValidated as string)
+        localStorage.setItem('sessionId', sessionId)
       }
     }
     requestSession()
