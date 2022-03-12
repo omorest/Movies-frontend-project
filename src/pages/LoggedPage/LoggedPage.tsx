@@ -1,8 +1,8 @@
 import './LoggedPage.css'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { fetchPostToken } from '../../api'
 import { Button, Text } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 
 const LoggedPage = () => {
   const [isDenied, setIsDenied] = useState<boolean>()
@@ -12,6 +12,7 @@ const LoggedPage = () => {
   useEffect(() => {
     const requestSession = async () => {
       const query = new URLSearchParams(location.search)
+      console.log(query)
       const denied = query.get('denied') === 'true'
       setIsDenied(denied)
       if (!denied) {
