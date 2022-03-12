@@ -35,9 +35,6 @@
   width: 100%;
 }
 
-.casts {
-  width: 70%;
-}
 
 .extra-info {
   display: flex;
@@ -61,4 +58,18 @@
   display: flex;
   gap: 10px;
   flex-wrap:  wrap;
+}
+
+.movies-cast {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.similar-movies {
+  width: 100%;
+}
+.casts {
+  width: 100%;
 }

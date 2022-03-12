@@ -18,7 +18,6 @@ const CarouselCompanies: FC<CarouselCompaniesProps> = ({ listCompanies, title, i
       <div className="text">
         <Text fontSize='2xl' as='b' textAlign='left'>{title}</Text>
       </div>
-      <br/>
       <div className={typeViewCompanies}>
         {listCompanies?.map((company: any) => <CardCompany company={company} key={company.id} />)}
       </div>

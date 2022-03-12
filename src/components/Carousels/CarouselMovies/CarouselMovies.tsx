@@ -28,7 +28,6 @@ const CarouselMovies: FC<CarouselMoviesProps> = ({ listMovies, title, isTypeGrid
       <div className="text">
         <Text fontSize='2xl' as='b' textAlign='left'>{title}</Text>
       </div>
-      <br/>
       <div className={typeViewMovies} ref={scrollRef} onScroll={handleScroll}>
         {listMovies?.map((movie: any) => <CardMovie movie={movie} key={movie.id} />)}
       </div>
