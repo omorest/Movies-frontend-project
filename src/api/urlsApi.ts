@@ -1,7 +1,6 @@
 import { KEY } from '../../configs'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
-// const BASE_URL_IMAGES = 'https://image.tmdb.org/t/p/w500'
 
 export const urlSearchMovies = `${BASE_URL}/search/movie?api_key=${KEY}`
 export const urlSearchCasts = `${BASE_URL}/search/person?api_key=${KEY}`

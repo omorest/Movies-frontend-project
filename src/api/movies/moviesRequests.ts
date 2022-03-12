@@ -1,3 +1,4 @@
+import { BASE_URL, KEY } from '../../../configs'
 import { MovieDetails } from './models'
 
 export const fetchMovies = async (url: string) => {

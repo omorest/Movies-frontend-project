@@ -6,13 +6,15 @@ import { fetchAccountId, fetchCastMovies, fetchDetailsMovies, fetchFavouriteMovi
 import { CarouselCasts, Navbar } from '../../components'
 import { Badge, Text } from '@chakra-ui/react'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
+import { Cast } from '../../api/cast/model'
+import { MovieDetails } from '../../api/movies/models'
 
 const DetailsPage = () => {
-  const [isLogged, setIsLogged] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [details, setDetails] = useState<any>()
-  const [accountId, setAccountId] = useState('')
-  const [cast, setCast] = useState<any[]>([])
+  const [isLogged, setIsLogged] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [details, setDetails] = useState<MovieDetails>()
+  const [accountId, setAccountId] = useState<number>()
+  const [cast, setCast] = useState<Cast[]>([])
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
 
   const { id } = useParams()
@@ -40,7 +42,7 @@ const DetailsPage = () => {
   if (isLoading) return <h2>Is loading</h2>
 
   const handlerFavouriteMovie = () => {
-    fetchPostFavouriteMovie(localStorage.getItem('sessionId') as string, accountId, details.id as string, !isFavourite)
+    fetchPostFavouriteMovie(localStorage.getItem('sessionId') as string, accountId!, details?.id!, !isFavourite)
       .then((response) => {
         setIsFavourite(!isFavourite)
       })
@@ -50,9 +52,9 @@ const DetailsPage = () => {
       })
   }
 
-  const urlImage = `${BASE_URL_IMAGES}${details.poster_path}`
-  const genresBadges = details.genres?.map(({ name, id }: any) => <Badge colorScheme='blue' key={id} >{name}</Badge>)
-  const productionCompanies = details.production_companies?.map(({ name, id }: any) => <Text fontSize='m' textAlign='left' key={id}>{ name }</Text>)
+  const urlImage = `${BASE_URL_IMAGES}${details?.poster_path}`
+  const genresBadges = details?.genres?.map(({ name, id }: any) => <Badge colorScheme='blue' key={id} >{name}</Badge>)
+  const productionCompanies = details?.production_companies?.map(({ name, id }: any) => <Text fontSize='m' textAlign='left' key={id}>{ name }</Text>)
   const dollarFormatter = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
   const budget = dollarFormatter.format(details?.budget || 0)
   const revenue = dollarFormatter.format(details?.revenue || 0)
@@ -65,8 +67,8 @@ const DetailsPage = () => {
       <div className="container-details">
         <div className="header-details">
           <div className="main-info">
-            <div className="title"><Text fontSize='5xl' as='b' textAlign='left'>{details.title}</Text></div>
-            <Text fontSize='xl' textAlign='left' className="overview">{details.overview}</Text>
+            <div className="title"><Text fontSize='5xl' as='b' textAlign='left'>{details?.title}</Text></div>
+            <Text fontSize='xl' textAlign='left' className="overview">{details?.overview}</Text>
             {
               isLogged
                 ? <div className="fav" onClick={handlerFavouriteMovie}>
@@ -78,7 +80,7 @@ const DetailsPage = () => {
             }
           </div>
           <div className="img">
-            <img src={urlImage} alt={details.title} />
+            <img src={urlImage} alt={details?.title} />
           </div>
         </div>
         <div className="generic-info">
@@ -88,11 +90,11 @@ const DetailsPage = () => {
           <div className="extra-info">
             <div className="release-date">
               <Text fontSize='xl' as='b' textAlign='left'>Release Date</Text>
-              <Text fontSize='m' textAlign='left'>{details.release_date}</Text>
+              <Text fontSize='m' textAlign='left'>{details?.release_date}</Text>
             </div>
             <div className="status">
               <Text fontSize='xl' as='b' textAlign='left'>Status</Text>
-              <Badge colorScheme='purple'>{details.status}</Badge>
+              <Badge colorScheme='purple'>{details?.status}</Badge>
             </div>
             <div className="genres">
               <Text fontSize='xl' as='b' textAlign='left'>Genres</Text>

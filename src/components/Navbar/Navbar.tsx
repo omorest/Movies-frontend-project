@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const handlerLogin = async () => {
     const requestToken = await fetchRequestToken()
-    const url = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:3000/logged`
+    const url = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:4173/logged`
     window.location.replace(url)
   }
 

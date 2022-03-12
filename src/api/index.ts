@@ -79,7 +79,7 @@ export const fetchFavouriteMovies = async (sessionId: string, accountId: number)
   return results
 }
 
-export const fetchPostFavouriteMovie = async (sessionId: string, accountId: string, id: string, isFavourite: boolean) => {
+export const fetchPostFavouriteMovie = async (sessionId: string, accountId: number, id: number, isFavourite: boolean) => {
   const urlParams = `&session_id=${sessionId}`
   const postData = {
     media_type: 'movie',
