@@ -1,6 +1,6 @@
 import './CardCast.css'
 import { BASE_URL_IMAGES } from '../../../../configs'
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, Text } from '@chakra-ui/react'
 import { Cast } from '../../../api/cast/model'
 import { FC } from 'react'
 
@@ -14,22 +14,13 @@ const CardCast:FC<CardCastProps> = ({ cast }) => {
 
   return (
     <>
-      <Box w='200px' className="card-cast" borderWidth='3px' borderRadius='3px'>
-        <Image src={urlImage} alt={name} borderRadius='3px' />
-        <Box display='flex' alignItems='baseline' >
-          <Box
-            width='100%'
-            p='3'
-            color='black.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='4'
-          >
-            {name}
-          </Box>
-        </Box>
+      <Box w='200px' className="card-cast" borderWidth='3px' borderRadius='3px' >
+        <div className="image">
+          <Image src={urlImage} alt={name} borderRadius='3px' />
+        </div>
+        <div className="text-cast">
+          <Text fontSize='m' as='b' className="name-cast">{name}</Text>
+        </div>
       </Box>
     </>
   )

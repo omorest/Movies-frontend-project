@@ -11,14 +11,13 @@ interface CarouselCastsProps {
 }
 
 const CarouselCasts: FC<CarouselCastsProps> = ({ listCasts, title, isTypeGrid = true }) => {
-  const typeViewCasts = isTypeGrid ? 'gallery' : 'carousel'
+  const typeViewCasts = isTypeGrid ? 'gallery' : 'carousel-cast'
 
   return (
     <>
       <div className="text">
         <Text fontSize='2xl' as='b'>{title}</Text>
       </div>
-      <br/>
       <div className={typeViewCasts}>
         {listCasts?.map((cast: any) => <CardCast cast={cast} key={cast.id} />)}
       </div>

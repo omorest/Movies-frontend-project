@@ -1,10 +1,10 @@
 import './DetailsPage.css'
-import { fetchCastMovies, fetchDetailsMovies, fetchAccountId, fetchFavouriteMovies, fetchPostFavouriteMovie } from '../../api/'
-import { CarouselCasts, Navbar } from '../../components'
+import { fetchCastMovies, fetchDetailsMovies, fetchAccountId, fetchFavouriteMovies, fetchPostFavouriteMovie, fetchSimilarMovies } from '../../api/'
+import { CarouselCasts, CarouselMovies, Navbar } from '../../components'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
-import { MovieDetails } from '../../api/movies/models'
+import { Movie, MovieDetails } from '../../api/movies/models'
 import { Badge, Spinner, Text } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
@@ -13,6 +13,7 @@ const DetailsPage = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [details, setDetails] = useState<MovieDetails>()
+  const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
   const [accountId, setAccountId] = useState<number>()
   const [cast, setCast] = useState<Cast[]>([])
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
@@ -24,6 +25,8 @@ const DetailsPage = () => {
       setIsLoading(true)
       const detailsMovies = await fetchDetailsMovies(id as string)
       const castMovie = await fetchCastMovies(id as string, 10)
+      const similarMovies = await fetchSimilarMovies(id as string)
+      setSimilarMovies(similarMovies)
       setDetails(detailsMovies)
       setCast(castMovie)
       setIsLogged(isLogged)
@@ -91,8 +94,13 @@ const DetailsPage = () => {
           </div>
         </div>
         <div className="generic-info">
-          <div className="casts">
-            <CarouselCasts title='Cast' isTypeGrid={true} listCasts={cast}/>
+          <div className="movies-cast">
+            <div className="similar-movies">
+              <CarouselMovies title='Similar movies' isTypeGrid={false} listMovies={similarMovies}/>
+            </div>
+            <div className="casts">
+              <CarouselCasts title='Cast' isTypeGrid={true} listCasts={cast}/>
+            </div>
           </div>
           <div className="extra-info">
             <div className="release-date">
