@@ -7,6 +7,7 @@ import { Text } from '@chakra-ui/react'
 const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false)
   const navigate = useNavigate()
+
   const handlerLogin = async () => {
     const requestToken = await fetchRequestToken()
     const url = `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${location.origin}/logged`
@@ -20,7 +21,8 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    setIsLogged(Boolean(localStorage.getItem('sessionId')))
+    const isLogged = Boolean(localStorage.getItem('sessionId'))
+    setIsLogged(isLogged)
   }, [])
 
   return (

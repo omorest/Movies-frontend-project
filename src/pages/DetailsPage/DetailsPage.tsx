@@ -20,6 +20,7 @@ const DetailsPage = () => {
   const { id } = useParams()
   useEffect(() => {
     const isLogged = Boolean(localStorage.getItem('sessionId'))
+    console.log({ isLogged })
     const request = async () => {
       setIsLoading(true)
       const detailsMovies = await fetchDetailsMovies(id as string)
