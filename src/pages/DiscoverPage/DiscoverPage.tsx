@@ -21,7 +21,6 @@ const DiscoverPage = () => {
 
   const handlerNewMovies = async () => {
     const filteredMovies = await fetchFilterMovies(filters, pageMovies + 1)
-    console.log(filteredMovies)
     setPageMovies(pageMovies + 1)
     setMovies([...movies, ...filteredMovies])
   }

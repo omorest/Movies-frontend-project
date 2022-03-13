@@ -1,5 +1,5 @@
 import { BASE_URL, KEY } from '../../../configs'
-import { Movie, MovieDetails, Review, TrailerMovie } from './models'
+import { Movie, MovieDetails, Reviews, TrailerMovie } from './models'
 
 export const fetchMovies = async (url: string):Promise<Movie[]> => {
   const data = await fetch(url)
@@ -29,9 +29,9 @@ export const fetchTrailerMovie = async (id: number): Promise<TrailerMovie> => {
   return results[0] || null
 }
 
-export const fetchReviews = async (id: number, page: number): Promise<Review[]> => {
+export const fetchReviews = async (id: number, page: number): Promise<Reviews> => {
   const url = `${BASE_URL}/movie/${id}/reviews?api_key=${KEY}&page=${page}`
   const data = await fetch(url)
-  const { results } = await data.json()
+  const results = await data.json()
   return results
 }

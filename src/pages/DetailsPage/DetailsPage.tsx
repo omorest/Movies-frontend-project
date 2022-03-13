@@ -45,7 +45,6 @@ const DetailsPage = () => {
       }
       setIsLoading(false)
     }
-    console.log({ isFavourite })
     request()
   }, [id])
 

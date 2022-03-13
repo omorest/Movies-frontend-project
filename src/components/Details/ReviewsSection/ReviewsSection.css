@@ -8,3 +8,19 @@
 .reviews {
   margin-top: 30px;
 }
+
+.pagination {
+  margin-top: 20px;
+  font-size: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.arrow {
+  margin: 10px 20px;
+}
+
+.next, .prev {
+  cursor: pointer;
+}

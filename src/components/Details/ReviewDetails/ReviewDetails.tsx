@@ -17,7 +17,7 @@ const ReviewDetails: FC<ReviewDetailsProps> = ({ review }) => {
         <h2>
           <AccordionButton>
             <Box flex='1' textAlign='left'>
-              <Text fontSize='m' as='b'>{username}</Text>
+              <Text fontSize='lg' as='b'>{username}</Text>
             </Box>
             <AccordionIcon />
           </AccordionButton>
@@ -25,7 +25,7 @@ const ReviewDetails: FC<ReviewDetailsProps> = ({ review }) => {
         <AccordionPanel pb={4} textAlign='left'>
           <div className="content-rate">
             <div className="content">
-              <p>{content}</p>
+              <Text fontSize='lg' >{content}</Text>
             </div>
             <div className="rate">
               <Text fontSize='3xl' as='b' >{rating}</Text>
