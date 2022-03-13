@@ -31,7 +31,7 @@ const FavouritesPage = () => {
       <CarouselMovies title='Favourite Movies' listMovies={favouriteMovies} isTypeGrid={true}/>
       <br />
       {
-        totalPage > 1
+        totalPage > 1 && page < totalPage
           ? <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerMoreMovies} >Show more</Button>
           : null
       }
