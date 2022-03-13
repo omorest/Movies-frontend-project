@@ -4,6 +4,8 @@ import { FilterGenres, FilterRate, FilterReleaseDate, FiltersMovies } from './Fi
 import { CardCast, CardCompany, CardMovie } from './Cards'
 import SearchInput from './SearchInput/SearchInput'
 import Navbar from './Navbar/Navbar'
+import SidebarDetails from './Details/SidebarDetails/SidebarDetails'
+import MainInfoDetails from './Details/MainInfoDetails/MainInfoDetails'
 
 export {
   CardMovie,
@@ -17,8 +19,10 @@ export {
   FilterRate,
   FilterGenres,
   SearchInput,
+  SidebarDetails,
   MoviesSections,
   SectionPopularMovies,
   SectionNowPlayingMovies,
+  MainInfoDetails,
   Navbar
 }
