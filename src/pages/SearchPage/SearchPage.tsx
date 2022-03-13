@@ -15,6 +15,7 @@ const SearchPage = () => {
   const [pageCompanies, setPageCompanies] = useState<number>(1)
   const [totalPageCast, setTotalPageCast] = useState<number>(1)
   const [totalPageCompanies, setTotalPageCompanies] = useState<number>(1)
+  const [totalPageMovies, setTotalPageMovies] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [typeSection, setTypeSection] = useState('movies')
   const [list, setList] = useState<ReactElement>()
@@ -31,11 +32,12 @@ const SearchPage = () => {
   useEffect(() => {
     const requestMovies = async () => {
       setIsLoading(true)
-      const movies = await fetchMovies(urlSearchMovies + urlParamsMovies)
+      const { results: movies, total_pages: totalPageMovies } = await fetchMovies(urlSearchMovies + urlParamsMovies)
       const { results, total_pages: totalPageCast } = await fetchCast(urlSearchCasts + urlParamsCasts)
       const { results: companies, total_pages: totalPageCompanies } = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
       setTotalPageCast(totalPageCast)
       setTotalPageCompanies(totalPageCompanies)
+      setTotalPageMovies(totalPageMovies)
       setMovies(movies)
       setCasts(results)
       setCompanies(companies)
@@ -51,7 +53,7 @@ const SearchPage = () => {
   const handlerNewMovies = async () => {
     setPageMovies(pageMovies + 1)
     const urlParamsMovies = `&page=${pageMovies + 1}&query=${inputValue}`
-    const newMovies = await fetchMovies(urlSearchMovies + urlParamsMovies)
+    const { results: newMovies } = await fetchMovies(urlSearchMovies + urlParamsMovies)
     setMovies([...movies, ...newMovies])
   }
 
@@ -102,7 +104,11 @@ const SearchPage = () => {
       <>
         <CarouselMovies listMovies={movies} title={inputValue} isTypeGrid={true} />
         <br />
-        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
+        {
+          totalPageMovies > 1 && pageMovies < totalPageMovies
+            ? <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewMovies} >Show more</Button>
+            : null
+        }
         <br />
       </>
   }
