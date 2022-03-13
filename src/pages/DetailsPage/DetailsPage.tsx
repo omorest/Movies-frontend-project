@@ -1,7 +1,12 @@
 import './DetailsPage.css'
 import { CarouselCasts, CarouselMovies, MainInfoDetails, Navbar, SidebarDetails } from '../../components'
-import { fetchCastMovies, fetchDetailsMovies, fetchSimilarMovies } from '../../api/'
-import { Movie, MovieDetails } from '../../api/movies/models'
+import {
+  fetchAccountId, fetchCastMovies,
+  fetchDetailsMovies, fetchFavouriteMovies,
+  fetchPostFavouriteMovie, fetchSimilarMovies,
+  fetchTrailerMovie
+} from '../../api/'
+import { Movie, MovieDetails, TrailerMovie } from '../../api/movies/models'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 import { Spinner } from '@chakra-ui/react'
@@ -9,25 +14,50 @@ import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
 
 const DetailsPage = () => {
+  const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
+  const [trailerMovie, setTrailerMovie] = useState<TrailerMovie>()
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [details, setDetails] = useState<MovieDetails>()
-  const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
+  const [accountId, setAccountId] = useState<number>()
   const [cast, setCast] = useState<Cast[]>([])
   const { id } = useParams()
 
   useEffect(() => {
+    const isLogged = Boolean(localStorage.getItem('sessionId'))
     const request = async () => {
       setIsLoading(true)
+      const similarMovies = await fetchSimilarMovies(id as string, 5)
       const detailsMovies = await fetchDetailsMovies(id as string)
       const castMovie = await fetchCastMovies(id as string, 10)
-      const similarMovies = await fetchSimilarMovies(id as string, 5)
+      const trailer = await fetchTrailerMovie(Number(id))
       setSimilarMovies(similarMovies)
       setDetails(detailsMovies)
       setCast(castMovie)
+      setTrailerMovie(trailer)
+      if (isLogged) {
+        const accountId = await fetchAccountId(localStorage.getItem('sessionId') as string)
+        const favouriteMovies = await fetchFavouriteMovies(localStorage.getItem('sessionId') as string, accountId)
+        const isFavouriteMovie = favouriteMovies.find((movie: any) => movie.id === detailsMovies?.id)
+        setAccountId(accountId)
+        isFavouriteMovie ? setIsFavourite(true) : setIsFavourite(false)
+      }
       setIsLoading(false)
     }
+    console.log({ isFavourite })
     request()
   }, [id])
+
+  const handlerFavouriteMovie = () => {
+    fetchPostFavouriteMovie(localStorage.getItem('sessionId') as string, accountId!, details?.id!, !isFavourite)
+      .then((response) => {
+        setIsFavourite(!isFavourite)
+      })
+      .catch((error) => {
+        console.error(error)
+        setIsFavourite(isFavourite)
+      })
+  }
 
   if (isLoading) {
     return <Spinner
@@ -47,7 +77,12 @@ const DetailsPage = () => {
       <br />
       <div className="container-details">
         <div className="header-details">
-          <MainInfoDetails details={details!}/>
+          <MainInfoDetails
+            details={details!}
+            isFavourite={isFavourite}
+            trailerMovie={trailerMovie!}
+            onFavourite={handlerFavouriteMovie}
+          />
           <div className="img">
             <img src={urlImage} alt={details?.title} />
           </div>
