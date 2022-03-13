@@ -18,7 +18,6 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({ id }) => {
   useEffect(() => {
     const requestRevies = async () => {
       const { results, total_pages } = await fetchReviews(id, page)
-      console.log(total_pages)
       setReviews(results)
       setTotalPage(total_pages)
     }
