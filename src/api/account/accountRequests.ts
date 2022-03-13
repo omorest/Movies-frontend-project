@@ -1,5 +1,5 @@
 import { BASE_URL, KEY } from '../../../configs'
-import { Movie } from '../movies/models'
+import { FullMovies } from '../movies/models'
 
 export const fetchAccountId = async (sessionID: string): Promise<number> => {
   const urlParams = `${BASE_URL}/account?api_key=${KEY}&session_id=${sessionID}`
@@ -8,10 +8,16 @@ export const fetchAccountId = async (sessionID: string): Promise<number> => {
   return id
 }
 
-export const fetchFavouriteMovies = async (sessionId: string, accountId: number): Promise<Movie[]> => {
-  const urlParams = `${BASE_URL}/account/${accountId}/favorite/movies?api_key=${KEY}&session_id=${sessionId}`
+// export const fetchFavouriteMovies = async (sessionId: string, accountId: number): Promise<Movie[]> => {
+//   const urlParams = `${BASE_URL}/account/${accountId}/favorite/movies?api_key=${KEY}&session_id=${sessionId}`
+//   const data = await fetch(urlParams)
+//   const { results } = await data.json()
+//   return results
+// }
+export const fetchFavouriteMovies = async (sessionId: string, accountId: number, page: number): Promise<FullMovies> => {
+  const urlParams = `${BASE_URL}/account/${accountId}/favorite/movies?api_key=${KEY}&session_id=${sessionId}&page=${page}`
   const data = await fetch(urlParams)
-  const { results } = await data.json()
+  const results = await data.json()
   return results
 }
 

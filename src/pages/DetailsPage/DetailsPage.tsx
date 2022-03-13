@@ -12,6 +12,7 @@ import {
   fetchPostFavouriteMovie, fetchSimilarMovies,
   fetchTrailerMovie
 } from '../../api/'
+import { searchMovie } from './utils'
 
 const DetailsPage = () => {
   const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
@@ -37,8 +38,8 @@ const DetailsPage = () => {
       setTrailerMovie(trailer)
       if (isLogged) {
         const accountId = await fetchAccountId(localStorage.getItem('sessionId') as string)
-        const favouriteMovies = await fetchFavouriteMovies(localStorage.getItem('sessionId') as string, accountId)
-        const isFavouriteMovie = favouriteMovies.find((movie: any) => movie.id === detailsMovies?.id)
+        const { results: favouriteMovies, total_pages } = await fetchFavouriteMovies(localStorage.getItem('sessionId') as string, accountId, 1)
+        const isFavouriteMovie = await searchMovie(favouriteMovies, detailsMovies, total_pages, accountId)
         setAccountId(accountId)
         isFavouriteMovie ? setIsFavourite(true) : setIsFavourite(false)
       }

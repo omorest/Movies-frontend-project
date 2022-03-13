@@ -18,6 +18,13 @@ export interface MovieDetails {
   status: string
 }
 
+export interface FullMovies {
+  page: number
+  results: Movie[]
+  total_pages: number
+  total_results: number
+}
+
 export interface TrailerMovie {
   iso_639_1: string,
   iso_3166_1: string,
