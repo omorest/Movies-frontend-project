@@ -1,10 +1,11 @@
 import { BASE_URL, KEY } from '../../../configs'
-import { Movie, MovieDetails, Reviews, TrailerMovie } from './models'
+import { FullMovies, Movie, MovieDetails, Reviews, TrailerMovie } from './models'
 
-export const fetchMovies = async (url: string):Promise<Movie[]> => {
+export const fetchMovies = async (url: string):Promise<FullMovies> => {
   const data = await fetch(url)
-  const { results } = await data.json()
-  return results.filter((movie: any) => movie.poster_path !== null)
+  const results = await data.json()
+  results.results = results.results.filter((movie: any) => movie.poster_path !== null)
+  return results
 }
 
 export const fetchSimilarMovies = async (id: string, amountMovies: number):Promise<Movie[]> => {
