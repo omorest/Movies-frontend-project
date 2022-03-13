@@ -12,7 +12,7 @@ const SectionPopularMovies = () => {
 
   useEffect(() => {
     const requestMovies = async () => {
-      const movies: Movie[] = await fetchMovies(`${urlPopularMovies}&page=${page}`)
+      const { results: movies } = await fetchMovies(`${urlPopularMovies}&page=${page}`)
       setPopularMovies([...popularMovies, ...movies])
     }
     requestMovies().catch((err) => console.log(err))

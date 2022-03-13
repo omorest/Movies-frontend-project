@@ -1,10 +1,11 @@
 import { BASE_URL, KEY } from '../../../configs'
-import { Cast } from './model'
+import { Cast, FullCast } from './model'
 
-export const fetchCast = async (url: string):Promise<Cast[]> => {
+export const fetchCast = async (url: string):Promise<FullCast> => {
   const data = await fetch(url)
-  const { results } = await data.json()
-  return results.filter((cast: any) => cast.profile_path !== null)
+  const results = await data.json()
+  results.results = results.results.filter((cast: any) => cast.profile_path !== null)
+  return results
 }
 
 export const fetchCastMovies = async (id: string, amountCasts: number): Promise<Cast[]> => {
