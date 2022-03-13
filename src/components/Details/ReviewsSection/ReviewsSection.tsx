@@ -2,7 +2,7 @@ import './ReviewsSection.css'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import { FC, useEffect, useState } from 'react'
 import { Accordion, Text } from '@chakra-ui/react'
-import { fetchReviews } from '../../../api/movies/moviesRequests'
+import { fetchReviews } from '../../../api'
 import { Review } from '../../../api/movies/models'
 import ReviewDetails from '../ReviewDetails/ReviewDetails'
 
