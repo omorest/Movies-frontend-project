@@ -1,6 +1,8 @@
 .container-details {
   border-radius: 10px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 .header-details {
   display: flex;

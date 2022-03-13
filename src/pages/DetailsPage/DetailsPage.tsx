@@ -12,6 +12,7 @@ import { BASE_URL_IMAGES } from '../../../configs'
 import { Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
+import ReviewsSection from '../../components/Details/ReviewsSection/ReviewsSection'
 
 const DetailsPage = () => {
   const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
@@ -97,6 +98,9 @@ const DetailsPage = () => {
             </div>
           </div>
           <SidebarDetails movieDetails={details!}/>
+        </div>
+        <div >
+          <ReviewsSection id={Number(id)}/>
         </div>
       </div>
       <br />
