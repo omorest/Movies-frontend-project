@@ -2,7 +2,6 @@ import './ReviewDetails.css'
 import { AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Text } from '@chakra-ui/react'
 import { FC } from 'react'
 import { Review } from '../../../api/movies/models'
-import * as dayjs from 'dayjs'
 
 interface ReviewDetailsProps {
   review: Review
@@ -33,7 +32,7 @@ const ReviewDetails: FC<ReviewDetailsProps> = ({ review }) => {
             </div>
           </div>
           <br />
-          <Text fontSize='m' as='b' >{dayjs(created_at).format('DD-MM-YYYY')}</Text>
+          <Text fontSize='m' as='b' >{created_at.split('T')[0]}</Text>
 
         </AccordionPanel>
       </AccordionItem>
