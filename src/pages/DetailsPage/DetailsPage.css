@@ -1,63 +1,26 @@
 .container-details {
   border-radius: 10px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 .header-details {
   display: flex;
   justify-content: space-between;
-}
-.title {
-  text-align: left;
-}
-
-.main-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  width: 60%;
 }
 
 .img {
   width: 20%;
 }
 .img img {
-  /* height: 100%; */
   border-radius: 10px;
 }
-
 
 .generic-info {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-
-.extra-info {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  width: 20%;
-}
-
-.release-date ,
-.status,
-.genres,
-.production-companies,
-.budget,
-.revenue {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.genres-badges {
-  display: flex;
-  gap: 10px;
-  flex-wrap:  wrap;
 }
 
 .movies-cast {
@@ -70,6 +33,7 @@
 .similar-movies {
   width: 100%;
 }
+
 .casts {
   width: 100%;
 }
