@@ -6,6 +6,8 @@ import SearchInput from './SearchInput/SearchInput'
 import Navbar from './Navbar/Navbar'
 import SidebarDetails from './Details/SidebarDetails/SidebarDetails'
 import MainInfoDetails from './Details/MainInfoDetails/MainInfoDetails'
+import ReviewDetails from './Details/ReviewDetails/ReviewDetails'
+import ReviewsSection from './Details/ReviewsSection/ReviewsSection'
 
 export {
   CardMovie,
@@ -23,6 +25,8 @@ export {
   MoviesSections,
   SectionPopularMovies,
   SectionNowPlayingMovies,
+  ReviewDetails,
+  ReviewsSection,
   MainInfoDetails,
   Navbar
 }
