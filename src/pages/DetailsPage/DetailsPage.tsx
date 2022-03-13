@@ -1,18 +1,17 @@
 import './DetailsPage.css'
-import { CarouselCasts, CarouselMovies, MainInfoDetails, Navbar, SidebarDetails } from '../../components'
-import {
-  fetchAccountId, fetchCastMovies,
-  fetchDetailsMovies, fetchFavouriteMovies,
-  fetchPostFavouriteMovie, fetchSimilarMovies,
-  fetchTrailerMovie
-} from '../../api/'
+import { CarouselCasts, CarouselMovies, MainInfoDetails, Navbar, SidebarDetails, ReviewsSection } from '../../components'
 import { Movie, MovieDetails, TrailerMovie } from '../../api/movies/models'
 import { useEffect, useState } from 'react'
 import { BASE_URL_IMAGES } from '../../../configs'
 import { Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../../api/cast/model'
-import ReviewsSection from '../../components/Details/ReviewsSection/ReviewsSection'
+import {
+  fetchAccountId, fetchCastMovies,
+  fetchDetailsMovies, fetchFavouriteMovies,
+  fetchPostFavouriteMovie, fetchSimilarMovies,
+  fetchTrailerMovie
+} from '../../api/'
 
 const DetailsPage = () => {
   const [similarMovies, setSimilarMovies] = useState<Movie[]>([])
