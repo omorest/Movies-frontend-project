@@ -12,8 +12,9 @@ import { Company } from '../../api/companies/model'
 const SearchPage = () => {
   const [pageMovies, setPageMovies] = useState<number>(1)
   const [pageCasts, setPageCasts] = useState<number>(1)
-  const [totalPageCast, setTotalPageCast] = useState<number>(1)
   const [pageCompanies, setPageCompanies] = useState<number>(1)
+  const [totalPageCast, setTotalPageCast] = useState<number>(1)
+  const [totalPageCompanies, setTotalPageCompanies] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [typeSection, setTypeSection] = useState('movies')
   const [list, setList] = useState<ReactElement>()
@@ -32,8 +33,9 @@ const SearchPage = () => {
       setIsLoading(true)
       const movies = await fetchMovies(urlSearchMovies + urlParamsMovies)
       const { results, total_pages: totalPageCast } = await fetchCast(urlSearchCasts + urlParamsCasts)
-      const companies = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
+      const { results: companies, total_pages: totalPageCompanies } = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
       setTotalPageCast(totalPageCast)
+      setTotalPageCompanies(totalPageCompanies)
       setMovies(movies)
       setCasts(results)
       setCompanies(companies)
@@ -63,7 +65,7 @@ const SearchPage = () => {
   const handlerNewCompanies = async () => {
     setPageCompanies(pageCompanies + 1)
     const urlParamsCompanies = `&page=${pageCompanies + 1}&query=${inputValue}`
-    const newCompanies = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
+    const { results: newCompanies } = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
     setCompanies([...companies, ...newCompanies])
   }
 
@@ -89,7 +91,11 @@ const SearchPage = () => {
       <>
         <CarouselCompanies listCompanies={companies} title={inputValue} isTypeGrid={true} />
         <br/>
-        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
+        {
+          totalPageCompanies > 1 && pageCompanies < totalPageCompanies
+            ? <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCompanies} >Show more</Button>
+            : null
+        }
         <br/>
       </>,
     movies:
