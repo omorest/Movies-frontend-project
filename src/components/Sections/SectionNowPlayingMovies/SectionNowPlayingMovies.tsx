@@ -12,7 +12,7 @@ const SectionNowPlayingMovies = () => {
 
   useEffect(() => {
     const requestMovies = async () => {
-      const movies: Movie[] = await fetchMovies(`${urlNowPlayingMovies}&page=${page}`)
+      const { results: movies } = await fetchMovies(`${urlNowPlayingMovies}&page=${page}`)
       setNowPlayingMovies([...nowPlayingMovies, ...movies])
     }
     requestMovies().catch((err) => console.log(err))
