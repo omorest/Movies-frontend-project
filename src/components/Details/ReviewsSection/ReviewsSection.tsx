@@ -51,7 +51,7 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({ id }) => {
         </div>
         <div className="next" onClick={nextPage}>
           {
-            (totalPage > 1 && page === totalPage)
+            (totalPage > 1 && page !== totalPage)
               ? <AiOutlineArrowRight className="arrow"/>
               : null
           }
