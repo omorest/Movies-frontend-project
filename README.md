@@ -32,7 +32,7 @@ npm install
 
 ### Run server
 
-For running the server loccaly you must execute
+For running the server loccaly you must execute this command in root directory:
 
 ```
 npm run dev
@@ -40,7 +40,7 @@ npm run dev
 
 ## Build and preview
 
-If you want to build the project, execute:
+If you want to build the project, in root directory execute:
 
 ```
 npm run build
