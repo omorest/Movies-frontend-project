@@ -12,6 +12,7 @@ import { Company } from '../../api/companies/model'
 const SearchPage = () => {
   const [pageMovies, setPageMovies] = useState<number>(1)
   const [pageCasts, setPageCasts] = useState<number>(1)
+  const [totalPageCast, setTotalPageCast] = useState<number>(1)
   const [pageCompanies, setPageCompanies] = useState<number>(1)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [typeSection, setTypeSection] = useState('movies')
@@ -30,10 +31,11 @@ const SearchPage = () => {
     const requestMovies = async () => {
       setIsLoading(true)
       const movies = await fetchMovies(urlSearchMovies + urlParamsMovies)
-      const casts = await fetchCast(urlSearchCasts + urlParamsCasts)
+      const { results, total_pages: totalPageCast } = await fetchCast(urlSearchCasts + urlParamsCasts)
       const companies = await fetchCompanies(urlSearchCompanies + urlParamsCompanies)
+      setTotalPageCast(totalPageCast)
       setMovies(movies)
-      setCasts(casts)
+      setCasts(results)
       setCompanies(companies)
       setIsLoading(false)
     }
@@ -54,7 +56,7 @@ const SearchPage = () => {
   const handlerNewCasts = async () => {
     setPageCasts(pageCasts + 1)
     const urlParamsCasts = `&page=${pageCasts + 1}&query=${inputValue}`
-    const newCasts = await fetchCast(urlSearchCasts + urlParamsCasts)
+    const { results: newCasts } = await fetchCast(urlSearchCasts + urlParamsCasts)
     setCasts([...casts, ...newCasts])
   }
 
@@ -76,7 +78,11 @@ const SearchPage = () => {
       <>
         <CarouselCasts listCasts={casts} title={inputValue} isTypeGrid={true} />
         <br/>
-        <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
+        {
+          totalPageCast > 1 && pageCasts < totalPageCast
+            ? <Button colorScheme="blackAlpha" backgroundColor="#171923" color="white" variant='solid' isFullWidth onClick={handlerNewCasts} >Show more</Button>
+            : null
+        }
         <br/>
       </>,
     companies:
