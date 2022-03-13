@@ -48,7 +48,6 @@ const FilterRate: FC<FilterRateProps> = ({ sliderValue, onFilterChange }) => {
           bg='#242424'
           color='white'
           placement='bottom'
-          isOpen={showTooltip}
           label={`${sliderValue}`}
         >
           <SliderThumb bg='#242424'/>
