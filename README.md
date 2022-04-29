@@ -4,7 +4,7 @@
 
 ## Project 
 
-You can visit the project in the following link:
+You can visit the website in the following link:
 
 [Movies App TMDB](https://movies-app-tmdb.vercel.app)
 
