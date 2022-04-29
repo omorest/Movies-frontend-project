@@ -1,4 +1,4 @@
-# TAM-frontend-project
+# Movies-frontend-project
 
 **Author:** Oscar Moreira Estévez
 
